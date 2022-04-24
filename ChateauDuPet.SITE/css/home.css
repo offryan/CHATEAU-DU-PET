@@ -1,0 +1,112 @@
+﻿ 
+.container-fluid {
+    background-color: #ecf2fc;
+    margin: 0;
+    padding: 0;
+} 
+/*Main*/
+
+
+.Centro {
+    width: 100%;
+    max-height: 100%;
+    padding:0;
+}
+
+
+/*Textos*/
+.TxtMedica {
+    text-align: justify;
+    font-size: 20px;
+    color: black;
+    font-family: anton,sans-serif;
+}
+
+.TextFaixaAzul {
+    text-align: justify;
+    color: white;
+    font-size: 20px;
+    float:left;
+}
+    
+
+.Centro1 {  
+    height: 300px;
+    position:center;
+}
+ 
+/*Faixa azul*/
+.Faixa-Azul {
+    width: 100%;
+    min-height: 100px;
+    max-height: 1700px; 
+    background-color: #0d294e;
+    margin: 0;
+    padding: 0;
+}  
+.Centro2 { 
+    width: 100%;
+    min-height: 100px;
+    max-height: 1370px; 
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border:  none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 17px;
+    width: 50%;
+    border-radius: 2px 2px;
+}
+.tablink:hover {
+        background-color: #777;
+    }
+
+/* Style the tab content */
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 50px;
+    text-align: center;
+}
+
+
+#Empresas {
+    background-color: #ecf2fc;
+}
+
+#Profissionais {
+    background-color: #ecf2fc;
+} 
+
+
+
+
+/*Contato*/
+
+.CentroContato { 
+    width: 100%;
+    min-height: 100px; 
+}
+
+.LinksContato p {
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+
+} 
+
+ 
+
+ 
+
+
+   
+ 

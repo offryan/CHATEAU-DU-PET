@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ChateauDuPet.Views.ItemDetailPage"
+             Title="{Binding Title}">
+
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="Nome do profissional " FontSize="Medium" />
+        <Label Text="Luiz Ricardo C Melo" FontSize="Small"/>
+        <Label Text="Email:" FontSize="Medium" />
+        <Label Text="luiricardzo@hotmail.com" FontSize="Small"/>
+        <Label Text="CPF:" FontSize="Medium" />
+        <Label Text="466.748.180.36" FontSize="Small"/>
+        <Label Text="Senha:" FontSize="Medium" />
+        <Label Text="************" FontSize="Small"/>
+        <Label Text="CPF:" FontSize="Medium" />
+        <Label Text="{Binding Text}" FontSize="Small"/>
+        <Label Text="CPF:" FontSize="Medium" />
+        <Label Text="{Binding Text}" FontSize="Small"/>
+        <Label Text="CPF:" FontSize="Medium" />
+        <Label Text="{Binding Text}" FontSize="Small"/>
+        <Label Text="CPF:" FontSize="Medium" />
+        <Label Text="{Binding Text}" FontSize="Small"/>
+        <Label Text="CPF:" FontSize="Medium" />
+        <Label Text="{Binding Text}" FontSize="Small"/>
+        <Label Text="CPF:" FontSize="Medium" />
+        <Label Text="{Binding Text}" FontSize="Small"/>
+        <Label Text="CPF:" FontSize="Medium" />
+        <Label Text="{Binding Text}" FontSize="Small"/>
+        <Label Text="CPF:" FontSize="Medium" />
+        <Label Text="{Binding Text}" FontSize="Small"/>
+        <Label Text="CPF:" FontSize="Medium" />
+        <Label Text="{Binding Text}" FontSize="Small"/>
+
+    </StackLayout>
+    
+</ContentPage>

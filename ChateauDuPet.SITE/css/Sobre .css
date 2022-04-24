@@ -1,0 +1,161 @@
+﻿body {
+    padding: 0;
+}
+
+.container-fluid {
+    background-color: #ecf2fc;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #ecf2fc;
+}
+/*botoes do menu*/
+
+.menu a {
+    text-decoration: none;
+    color: #0d294e;
+    font-size: 20px;
+}
+
+    .menu a::after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 3px;
+        background-color: #f27298;
+        transition: .5s ease-out;
+    }
+
+    .menu a:hover::after {
+        width: 100%;
+    }
+/*Main*/
+
+
+.Centro {
+    width: 100%;
+    max-height: 100%;
+    padding: 0;
+}
+
+.Centro1 {
+    height: 300px;
+    position: center;
+}
+
+/*Faixa azul*/
+.Faixa-Azul {
+    width: 100%;
+    min-height: 100px;
+    max-height: 1700px;
+    background-color: #0d294e;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.Roleta {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.Txt-Faixa {
+    color: white;
+}
+
+
+
+.Centro2 {
+    width: 100%;
+    min-height: 100px;
+    max-height: 1370px;
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+
+
+/*Contato*/
+
+.CentroContato {
+    width: 100%;
+    min-height: 100px;
+}
+
+.LinksContato p {
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+
+/*Footer*/
+.FaixaF {
+    width: 100%;
+    min-height: 100px;
+    max-height: 1370px;
+    background-color: #0d294e;
+    margin: 0;
+    padding: 0;
+    float: right;
+}
+
+
+.CentroF {
+    width: 100%;
+    color: white;
+    min-height: 100px;
+    max-height: 1370px;
+}
+
+
+
+/*Textos*/
+.TxtMedica, h5, p {
+    font-size: 15px;
+    font-family: anton,sans-serif;
+}
+
+h1 {
+    margin: 320px 0 0 0;
+    width: 300px;
+    float: left;
+    content: "";
+    display: block;
+    font-family: 'Times New Roman', Times, serif;
+    text-decoration: dashed;
+}
+
+
+
+
+
+
+
+.custom-shape-divider-bottom-1618516495 {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+    .custom-shape-divider-bottom-1618516495 svg {
+        position: relative;
+        display: block;
+        width: calc(106% + 1.3px);
+        height: 50px;
+    }
+
+    .custom-shape-divider-bottom-1618516495 .shape-fill {
+        fill: #0D294E;
+    }

@@ -1,0 +1,179 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="DefultADM.master.cs" Inherits="ChateauDuPet.UI.DefultADM" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="Imagens/pp.png" rel="icon" type="image/png" sizes="16x16" />
+
+    <title>Administrativo</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+     <link href="css/Padrao.css" rel="stylesheet" />
+    <link href="css/Animações.css" rel="stylesheet" />
+    <link href="css/home.css" rel="stylesheet" />
+    <link href="css/w3.css" rel="stylesheet" />
+     
+    <!-- Bootstrap core CSS -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(".date").mask("00/00/0000");
+            $(".time").mask("00:00:00");
+            $(".date_time").mask("00/00/0000 00:00:00");
+            $(".cep").mask("00000-000");
+            $(".phone").mask("0000-0000");
+            $(".phone_with_ddd").mask("(00) 00000-0000");
+            $(".phone_us").mask("(000) 000-0000");
+            $(".cpf").mask("000.000.000-00", { reverse: true });
+            $(".cnpj").mask("00.000.000/0000-00", { reverse: true });
+            $(".placeholderDate").mask("00/00/0000", { placeholder: "__/__/____" });
+        });
+    </script>
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+
+</head>
+
+<body class="container-fluid">
+    
+        <form id="Form1" runat="server">
+
+    <header class="navbar navbar-dark sticky-top   flex-md-nowrap p-0 shadow"" style="  background-color: #0d294e;">
+  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" >Chateau</a>
+  
+        
+  <button style="float: right; margin: 10px 0 0 10px" class="navbar-toggler   d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+    <span  class="navbar-toggler-icon"></span>
+  </button>  
+ 
+</header>
+    <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block  text-body sidebar collapse" style="  background-color: #ecf2fc;">
+      <div class="position-sticky pt-3">
+            <asp:Repeater ID="rptMenu" runat="server" >
+        <ItemTemplate>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <asp:LinkButton runat="server" class="nav-link active"  href="MainAdm.aspx?id=<%# DataBinder.Eval(Container.DataItem, "IdAdministrativo") %>">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"  ><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            Feed
+            </asp:LinkButton>
+          </li>
+          <li class="nav-item">
+            <asp:LinkButton runat="server" class="nav-link" href="ListEmpresa?id=<%# DataBinder.Eval(Container.DataItem, "IdAdministrativo") %>">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file" ><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+              Empresas
+            </asp:LinkButton>
+          </li> 
+          <li class="nav-item">
+            <asp:LinkButton runat="server" class="nav-link" href="ListProfissional?id=<%# DataBinder.Eval(Container.DataItem, "IdAdministrativo") %>">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"  ><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Profissionais
+            </asp:LinkButton>
+          </li>
+          <li class="nav-item">
+            <asp:LinkButton runat="server" class="nav-link" href="ListVagas.aspx?id=<%# DataBinder.Eval(Container.DataItem, "IdAdministrativo") %>">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2"  ><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+          Vagas
+            </asp:LinkButton>
+          </li>
+          <li class="nav-item">
+            <asp:LinkButton runat="server" class="nav-link" href="ListCandidatos?id=<%# DataBinder.Eval(Container.DataItem, "IdAdministrativo") %>">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers" ><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              Candidatos
+            </asp:LinkButton>
+          </li>
+        </ul>
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+          <span>Encontrar</span>
+          <asp:LinkButton runat="server" class="link-secondary" href="#" aria-label="Add a new report">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-circle"  ><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+          </asp:LinkButton>
+        </h6>
+
+          <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+            <asp:LinkButton runat="server" class="nav-link" href="ListAdm?id=<%# DataBinder.Eval(Container.DataItem, "IdAdministrativo") %>">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"  ><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+              Lista Administrativo
+            </asp:LinkButton>
+          </li>
+          
+          <li class="nav-item">
+            <asp:LinkButton runat="server" class="nav-link" href="AddAdminitrativo?id=<%# DataBinder.Eval(Container.DataItem, "IdAdministrativo") %>">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" ><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+             Administrativo
+            </asp:LinkButton>
+          </li>
+          <li class="nav-item d-md-none">
+            <asp:LinkButton runat="server" class="nav-link" ID="btnSair" OnClick="Sair_Click" OnClientClick="Deseja mesmo Sair ?">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+</svg> Sair
+            </asp:LinkButton>
+          </li>
+        </ul>
+            
+                </ItemTemplate>
+            </asp:Repeater>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+      
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+            </asp:ContentPlaceHolder>
+       
+    </main>
+  </div>
+     
+ 
+         
+       
+    <footer>
+
+    <div class="custom-shape-divider-bottom-1618516495">
+        <svg   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+            <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+            <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+        </svg>
+    </div>
+
+        <div class="FaixaF ">
+            <div class=" CentroF " style="margin: auto;">
+                <div class="bd-example container-xxl " style="min-height: 100px; padding: 0 20px 0 20px">
+            
+
+                    <div class="row">
+
+                        <div class="bd-example" style="margin: auto;">
+                            <br />
+                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                            </svg>
+                            <label class="menu"><a style="color: white;">Endereço</a></label>
+                            <br />
+                            <br />
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14629.541702315722!2d-46.600461!3d-23.554597!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce594b95eddcef%3A0xcafbdac5346df73!2sR.%20do%20Orat%C3%B3rio%2C%20426%20-%20Mooca%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003116-000%2C%20Brasil!5e0!3m2!1spt-BR!2sus!4v1618190538335!5m2!1spt-BR!2sus"
+                                class=" container-fluid " height="300" style="border: 0;"></iframe>
+
+                        </div>
+                    </div>
+
+                    <h4 style="text-align: center; font-size: 10px;">© 2021 Chateau</h4>
+                </div>
+            </div>
+        </div>
+    </footer> 
+        </form> 
+
+</body>
+</html>

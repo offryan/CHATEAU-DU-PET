@@ -1,0 +1,788 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Defult.master.cs" Inherits="ChateauDuPet.UI.Defult" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1"/> 
+    <link href="Imagens/pp.png" rel="icon" type="image/png" sizes="16x16" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/Padrao.css" rel="stylesheet" />
+    <link href="css/Animações.css" rel="stylesheet" />
+    <link href="css/home.css" rel="stylesheet" />
+    <link href="Imagens/pp.png" rel="icon" />
+    <link href="css/w3.css" rel="stylesheet" />
+    <script src="js/bootstrap.min.js"></script>
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="JavaScript.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(".date").mask("00/00/0000");
+            $(".time").mask("00:00:00");
+            $(".date_time").mask("00/00/0000 00:00:00");
+            $(".cep").mask("00000-000");
+            $(".phone").mask("0000-0000");
+            $(".phone_with_ddd").mask("(00) 00000-0000");
+            $(".phone_us").mask("(000) 000-0000");
+            $(".cpf").mask("000.000.000-00", { reverse: true });
+            $(".cnpj").mask("00.000.000/0000-00", { reverse: true });
+            $(".placeholderDate").mask("00/00/0000", { placeholder: "__/__/____" });
+        });
+        let senha = document.getElementById('.senha');
+        let senhaC = document.getElementById('.senhaC');
+
+        function validarSenha() {
+            if (senha.value != senhaC.value) {
+                senhaC.setCustomValidity("Senhas diferentes!");
+                senhaC.reportValidity();
+                return false;
+            } else {
+                senhaC.setCustomValidity("");
+                return true;
+            }
+        }
+
+        // verificar também quando o campo for modificado, para que a mensagem suma quando as senhas forem iguais
+        senhaC.addEventListener('input', validarSenha)
+    </script>
+    <title>Chateau </title>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="container-fluid">
+
+     
+        <header>
+            <nav class="navbar navbar-expand-md navbar-light     container-xxl ">
+                <div class="container-lg">
+                    <img src="Imagens/pp.png" width="100" style="max-height: 500px;" class="d-block my-1" />
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav menu    ">
+                            <li class="nav-item col-6 col-md-auto">
+                                <a class="nav-link p-2" href="index.aspx">Home</a>
+                            </li>
+                            <li class="nav-item col-6 col-md-auto">
+                                <a class="nav-link p-2" href="Serviços.aspx">Serviços</a>
+                            </li>
+                            <li class="nav-item col-6 col-md-auto">
+                                <a class="nav-link p-2" href="sobre.aspx">Sobre</a>
+                            </li>
+
+                            <li class="nav-item col-6 col-md-auto d-md-none d-block">
+                                <a class="nav-link p-2" href="Login.aspx">Login</a>
+                            </li>
+
+                            <li class="nav-item col-6 col-md-auto d-md-none d-block">
+                                <a class="nav-link p-2" href="Cadastro.aspx">Cadastrar</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <a class="btn btn-outline-danger d-none d-md-block" href="Login.aspx" style="float: right; margin: 10px 0 0 10px">Login</a>
+                <a class="btn btn-outline-danger d-none d-md-block" href="Cadastro.aspx" style="float: right; margin: 10px 0 0 10px">Cadastro</a>
+
+            </nav>
+        </header>
+
+
+
+
+
+        <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modalTermos" aria-hidden="true" aria-labelledby="modalCadastroLabel" tabindex="-1">
+            <div class="modal-dialog  modal-xl modal-dialog-scrollable  modal-fullscreen-md-down">
+                <div class="modal-content">
+                    <div class="modal-header">
+
+                        <h5 class="modal-title" id="modalCadastroLabel3">Cadastro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h1 style="padding-top: 3pt; padding-left: 134pt; text-indent: 0pt; text-align: center;"></h1>
+
+                        <div class="accordion accordion-flush" id="accordionFlush">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        TERMOS DE USO
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+
+                                    <div class="accordion-body">
+                                        <h1>TERMOS DE USO</h1>
+                                        <p>
+                                            Pelo presente instrumento, CHATEAU DU PET. inscrita no CNPJ/MF n.º , com sede na Rua do Oratório, n.º 426, Mooca, CEP 03116-000, São Paulo/SP, doravante denominada CHATEAU, estabelece o presente instrumento denominado TERMOS E CONDIÇÕES GERAIS DE USO (“TERMOS DE USO”), conforme as condições abaixo estabelecidas.
+       
+                                        </p>
+                                        <br />
+                                        <h2>1.       GLOSSÁRIO</h2>
+
+                                        <p>
+                                            1.1.             Para melhor entendimento da terminologia utilizada nestes TERMOS DE USO, seguem abaixo as respetivas conceituações:
+
+ 
+                                            <br />
+                                            <br />
+                                            a)         PLATAFORMA: É uma plataforma digital com o intuito de facilitar a gestão dos profissionais no mercado pet, reduzir custo, tempo e aumentar a clareza e segurança dos gestores no processo de contratação de pessoas, no âmbito da área pet;
+                                            <br />
+                                            <br />
+                                            b)        CHATEAU DU PET: Empresa desenvolvedora e gestora da PLATAFORMA;
+                                            <br />
+                                            <br />
+                                            c)         USUÁRIO: Pessoa física ou jurídica que utilizar a PLATAFORMA, seja na qualidade de prestador contratante de serviços;
+
+ 
+                                        </p>
+                                        <br />
+                                        <br />
+                                        <h2>2.       ACEITAÇÃO
+                                        </h2>
+                                        <p>
+                                            2.1.             O USUÁRIO fica ciente e concorda que ao clicar na opção “EU ACEITO”, navegar na PLATAFORMA ou acessar o seu conteúdo, automaticamente terá aderido e concordado em se submeter integralmente às condições destes TERMOS DE USO.
+
+                                            <br />
+                                            <br />
+
+                                            2.2.             A aceitação destes TERMOS DE USO é absolutamente indispensável à utilização da PLATAFORMA.
+
+ 
+                                            <br />
+                                            <br />
+                                            2.3.             Ao aceitar estes TERMOS DE USO, o USUÁRIO reconhece que a CHATEAU DU PET poderá coletar, manter, usar e tratar seus dados e informações por ela inserida na PLATAFORMA, em harmonia com o estabelecido em nossa POLÍTICA DE PRIVACIDADE.
+                                        <p />
+
+                                        <br />
+                                        <br />
+                                        <h2>3. OBJETO</h2>
+                                        <p>
+                                            3.1.             Estes TERMOS DE USO rege os direitos e responsabilidades relativas ao uso da PLATAFORMA e o relacionamento entre USUÁRIO e CHATEAU DU PET.
+
+ <br />
+                                            <p />
+
+                                        <h2>4.                  CADASTRO
+                                        </h2>
+                                        <br />
+                                        <br />
+                                        <p>
+                                            4.1.             Não pode ingressar como USUÁRIO na PLATAFORMA pessoas físicas que não gozem de capacidade civil plena ou pessoas jurídicas que não tenham capacidade legal para aderir a todas as condições destes TERMOS DE USO. Também somente poderão se cadastrar como USUÁRIO pessoas físicas e jurídicas residentes no Brasil.
+
+ <br />
+                                            <br />
+
+                                            4.2.             Para ter acesso a PLATAFORMA, o USUÁRIO deverá se cadastrar, primeiramente escolhendo a opção “Quero Contratar” ou “Quero trabalhar”, oferecendo informações exatas, precisas e verdadeiras, mediante o preenchimento do respectivo formulário disponibilizado na PLATAFORMA.
+
+                                            O USUÁRIO garante e responde, pela veracidade, exatidão e autenticidade de seus dados pessoais cadastrados, devendo manter seu cadastro permanentemente atualizado.
+
+ <br />
+                                            <br />
+
+                                            4.3.             O USUÁRIO terá acesso a sua conta através de e-mail, login e senha, que não poderão ser divulgados a terceiros, sendo de responsabilidade única e exclusiva do USUÁRIO preservar esses dados.
+ <br />
+                                            <br />
+
+
+                                            4.4.             A CHATEAU DU PETnão se responsabiliza pela veracidade ou exatidão dos dados registrados no cadastro do USUÁRIO ou informações por ele inseridas na PLATAFORMA. O USUÁRIO será o único responsável civil e criminalmente pela veracidade e autenticidade dessas informações.
+
+ <br />
+                                            <br />
+
+                                            4.5.             O USUÁRIO não poderá utilizar a PLATAFORMA para quaisquer fins ilegais ou que, de qualquer forma, possam infringir a legislação, TERMOS DE USO e POLÍTICAS DE PRIVACIDADE.
+
+ <br />
+                                            <br />
+
+                                            4.6.             O USUÁRIO autoriza a CHATEAU DU PETa realizar as buscas que entender necessárias para validade das informações inseridas em seu cadastro ou por ela registradas na PLATAFORMA, podendo, para tanto, solicitar ao USUÁRIO dados suplementares e documentos que julguem relevantes a fim de convalidados o referido cadastro, estando ainda autorizada a fazer buscas em base de dados públicas ou privadas.
+
+ 
+ <br />
+                                            <br />
+                                            4.7.             A CHATEAU DU PETpoderá, a qualquer tempo, requerer dados e cadastros adicionais ao USUÁRIO, sobretudo para que tenham acessos a locais, produtos ou serviços específicos da PLATAFORMA.
+
+ <br />
+                                            <br />
+
+                                            4.8.             Não é permitida a manutenção de mais de um cadastro por um mesmo USUÁRIO na mesma categoria (prestador ou contratante de serviços) ou ainda a criação de novos cadastros por pessoas cujos cadastros originais tenham sido suspensos (temporária ou definitivamente) pela CHATEAU DU PET.
+                                            <br />
+                                            <br />
+                                            <p />
+
+                                        <h2>5.                  SERVIÇOS</h2>
+                                        <br />
+                                        <br />
+                                        <br />
+                                        <p>
+                                            5.1.             Por meio da PLATAFORMA os USUÁRIOS, na qualidade de contratantes ou de prestadores de serviços, poderão se conectar, a fim de preponderantemente gerar um vínculo de prestação de serviços entre as partes.
+
+                                        <br />
+                                            <br />
+
+                                            5.2.             A CHATEAU DU PETnão terá qualquer responsabilidade oriunda do vínculo eventualmente entabulado entre os USUÁRIOS, também não garante a qualidade dos serviços que serão feitos pelo prestador de serviços, nem tampouco dará qualquer certeza de que serão feitos pagamentos devidos pela parte contratante dos serviços.
+                                            <br />
+                                            <br />
+
+
+                                            5.3.             A CHATEAU DU PETnão garante a idoneidade dos USUÁRIOS, não tem meios de previamente validar sua identidade, disponibilizado a PLATAFORMA como mero meio de viabilizar a iteração entre os USUÁRIOS, que estão livres para entabular os negócios que julgarem necessários.
+                                        <br />
+                                            <br />
+                                            5.4.             Embora não seja responsabilidade da CHATEAU DU PET, recomenda-se que as partes formalizem todas as relações jurídica que vieram e entabular, mediante assinatura do respectivo contrato (de prestação de serviços, de trabalho, etc.) e consultem seu pertinentes advogados e assessores.
+                                        <br />
+                                            <br />
+                                            5.5.             Os serviços propiciados pela PLATAFORMA se limita em hospedar espaços para que o USUÁRIO prestador de serviços informe seus dados e atividade exercida, tais como veterinários,
+                                            motoristas, atendentes, cuidadores, tosadores, recepcionistas, cirurgiões, banhistas, etc., que poderão ser acessados pelo USUÁRIO contratante, que estejam esses serviços.
+                                        <br />
+                                            <p />
+                                        <br />
+
+
+                                        <h2>6.                  UTILIZAÇÃO DA PLATAFORMA
+                                        </h2>
+                                        <br />
+                                        <p>
+                                            6.1.             Os equipamentos (computador, smartphone, tablet, etc.), aplicativos e programas necessários à navegação e utilização da PLATAFORMA, sistema operacional Windows, Mac, Android e IOS, assim como a conexão à Internet são de inteira responsabilidade do USUÁRIO.
+                                        <br />
+
+                                            <br />
+
+                                            6.2.             O USUÁRIO irá criar uma conta, escolhendo a opção “Quero contratar” ou “Quero trabalhar”, irá preencher corretamente todos os campos destinados a criação de cadastro e senha.
+                                        <br />
+                                            <br />
+
+
+                                            6.3.             O USUÁRIO prestador de serviços, após, efetivado seu cadastro, ficará disponibilizado na PLATAFORMA algumas de suas informações, com o intuito de atrair o USUÁRIO comprador que esteja buscando o referido serviço.
+                                        <br />
+                                            <br />
+
+
+                                            6.4.             O USUÁRIO contratante, após efetivado seu cadastro, poderá navegar na PLATAFORMA e verificar os profissionais e atividades disponibilizadas que possam lhe interessar.
+                                        <br />
+                                            <br />
+
+
+                                            6.5.             A PLATAFORMA dessa forma facilitará os contatos entre seus USUÁRIOS, tanto para contratar quanto para prestar serviços na área de pet.
+                                        <br />
+                                            <p />
+
+                                        <h2>7.                   REMUNERAÇÃO PELOS SERVIÇOS 
+                                        </h2>
+                                        <br />
+
+                                        <p>
+                                            7.1.             O cadastro na PLATAFORMA é gratuito, contudo para o USUÁRIO contratante ter acesso ao contato completo do USUÁRIO prestador de serviços, deverá pagar um valor de R$ 3,00 (três reais) por contato escolhido (“Remuneração”).
+                                        <br />
+                                        <br />
+
+
+                                            7.2.             O pagamento da Remuneração se dará pelo sistema pré-pago, respeitado o valor mínimo de R$ 25,00 (vinte e cinco reais), que se converterá em crédito que será computado na conta do USUÁRIO contratante, a ser utilizado para acesso aos cadastros dos USUÁRIOS prestadores de serviços, conforme indicado no item 7.1.
+                                        <br />
+                                            <br />
+
+
+                                            7.3.             O USUÁRIO escolherá o Meio de Pagamento disponibilizado na PLATAFORMA para pagamento da REMUNERAÇÃO
+                                        <br />
+                                            <br />
+
+
+                                            7.4.             A CHATEAU DU PET se reserva no direito de livremente e a qualquer tempo modificar o valor da Remuneração cobrada do USUÁRIO, hipótese em que este será previamente avisado, com antecedência de pelo menos 5 (cinco) dias, para que possam optar por se manter ou não cadastrado na PLATAFORMA. Os créditos adquiridos antes dessa da mudança aqui cogitada, não serão afetados, prevalecendo-se as condições e preço dos créditos adquiridos anteriormente.
+                                        <br />
+                                            <br />
+                                            <p />
+
+                                        <h2>8.                   PROPRIEDADE INTELECTUAL </h2>
+
+                                        <br />
+
+                                        <p>
+                                            8.1.             O USUÁRIO se declara sabedor e reconhece que não é e não pode ser de sua titularidade todo e qualquer direito atinente à PLATAFORMA, bem como todos os direitos de propriedade intelectual e industrial, associados aos serviços fornecidos por meio PLATAFORMA e seus websites, conteúdos de suas telas, programas e bases de dados, redes, códigos, desenvolvimento, software,
+                                            <br />
+
+                                            arquitetura, hardware, conteúdo, informação, tecnologia, fases de integração, funcionalidades, domínios, arquivos que permitam ao USUÁRIO acessar e criar sua conta, ferramentas de vendas, marcas, patentes, direitos autorais, modelos industriais, nomes comerciais de propriedades da CHATEAU DU PET.
+
+                                        <br />
+                                            <br />
+                                            8.2.             As informações fornecidas pelo USUÁRIO prestador de serviços poderão ser disponibilizadas em sites de terceiros, tais como https://www.petdriver.com.br e https://sistemapet.com (outros sites poderão ser livremente adicionados no futuro, sem necessidade de autorização). Não obstante, como a PLATAFORMA não possui controle sobre estes sites, não será responsável pelos conteúdos, materiais, ações e/ou serviços prestados por eles, tampouco por perdas e danos, diretas ou indiretas, ocasionados pela utilização de tais sites.
+                                            <br />
+                                            <br />
+
+                                            8.3.             A CHATEAU DU PETirá envidar os melhores esforços para assegurar a confidencialidade e a segurança dos dados do USUÁRIO e demais informações por ele registrados na PLATAFORMA, entretanto não se responsabilizará por prejuízos, perdas ou danos, morais e materiais, oriundos da violação da PLATAFORMA por terceiros.
+                                            <br />
+                                            <br />
+
+                                            8.4.             A CHATEAU DU PET não se responsabilizará por quaisquer prejuízos, perdas ou danos, morais e materiais, nos equipamentos do USUÁRIO, nem tampouco por vírus que possam danificar esses equipamentos, ainda que em decorrência do acesso, utilização ou navegação na PLATAFORMA.
+                                            <br />
+                                            <br />
+
+                                            8.5.             Eventualmente a PLATAFORMA pode ficar indisponível por motivos técnicos ou falhas da internet ou por qualquer outro evento alheio ao controle da CHATEAU DU PET. O USUÁRIO renuncia ao direito de exigir qualquer reparação, inclusive perdas ou danos, morais e materiais, em virtude de prejuízos resultantes de dificuldades técnicas ou falhas aqui previstas.
+                                            <br />
+                                            <br />
+
+                                            8.6.             A CHATEAU DU PET não solicita ao USUÁRIO, nem mesmo por e-mail, seu nomes e senha. Qualquer ato desse tipo deve ser denunciado imediatamente à CHATEAU DU PET.
+                                            <br />
+                                            <p />
+                                        <br />
+                                        <h2>9.                  DENÚNCIAS</h2>
+                                        <br />
+                                        <p>
+                                            9.1.             A PLATAFORMA deixará à disposição do USUÁRIO um e-mail sac@chateaudupet.com.br para envio de dúvidas, denúncias e pedidos de cancelamentos.
+
+                                            <br />
+                                            <br />
+
+
+                                            9.2.             Caso o USUÁRIO tenha conhecimento de qualquer violação às regras previstas nestes TERMOS DE USO ou na POLÍTICA DE PRIVACIDADE assim como qualquer ilícito, de qualquer ordem praticado na PLATAFORMA ou por meio dela, deverá prontamente denunciá-lo à CHATEAU DU PET, na forma indicada no item anterior.
+
+                                            <br />
+                                            <br />
+                                            <p />
+                                        <br />
+
+                                        <h2>10.              VIGÊNCIA E CANCELAMENTO</h2>
+                                        <br />
+
+                                        <p>
+                                            10.1.         Enquanto perdurar válido o cadastro do USUÁRIO na PLATAFORMA, este automaticamente estará vinculado a estes TERMOS DE USO.
+                                            <br />
+                                            <br />
+
+
+
+                                            10.2.         Caso o USUÁRIO descumpra quaisquer das cláusulas e condições destes TERMOS DE USO, da POLÍTICA DE PRIVACIDADE, infrinja regras de utilização da PLATAFORMA, viole direitos da CHATEAU DU PET ou de outro USUÁRIO, será facultado à CHATEAU DU PET cancelar (temporária ou definitivamente) o cadastro do USUÁRIO faltoso e impedi-lo de utilizar a PLATAFORMA.
+
+ 
+                                            <br />
+                                            <br />
+
+                                            10.3.         O USUÁRIO poderá a qualquer momento e independente de justificativa, cancelar seu cadastro na PLATAFORMA, o que não implica em isentá-lo dos compromissos e obrigações assumidos no âmbito destes TERMOS DE USO e oriundos do uso da PLATAFORMA, que precisem ser respeitados mesmo depois do cancelamento.
+
+                                            <br />
+                                            <br />
+
+                                            10.4.         A CHATEAU DU PET pode a qualquer momento e independentemente de justificativa cancelar o cadastro do USUÁRIO, remover qualquer serviço ou conteúdo disponibilizado na PLATAFORMA, sem que isso gere ao USUÁRIO qualquer direito de indenização.
+
+                                            <br />
+                                            <p />
+
+                                        <h2>11.              ATUALIZAÇÕES</h2>
+                                        <br />
+                                        <br />
+
+                                        <p>
+                                            11.1.         A CHATEAU DU PET pode alterar a qualquer tempo estes TERMOS DE USO, assim como implementar qualquer modificação da PLATAFORMA, independente de prévio aviso ou autorização do USUÁRIO.
+                                            <br />
+
+                                            <br />
+
+
+                                            11.2.         É importante que o USUÁRIO verifique estes TERMOS DE USO toda vez em que acessar a PLATAFORMA.
+                                            <br />
+
+                                            <br />
+
+
+                                            11.3.         Os novos TERMOS DE USO entrarão em vigor 10 (dez) dias após sua publicação na PLATAFORMA. No prazo de 5 (cinco) dias contados a partir da publicação da nova versão, o USUÁRIO deverá comunicar por e-mail sua discordância quanto as mudanças implementadas, hipótese em que o vínculo contratual deixará de existir, com o cancelamento do cadastro do USUÁRIO.
+                                            <br />
+                                            <br />
+
+
+
+                                            11.3.1.   Não havendo manifestação no prazo estipulado, automaticamente restará entendido que o USUÁRIO aceitou os novos TERMOS DE USO, que continuará vinculando as partes.
+                                            <br />
+                                            <br />
+                                            <p />
+
+
+                                        <h2>12.              DISPOSIÇÕES FINAIS</h2>
+                                        <br />
+
+                                        <p>
+                                            12.1.         Todos os itens destes TERMOS DE USO, POLÍTICA DE PRIVACIDADE e todo qualquer vínculo jurídico oriundo da utilização da PLATAFORMA, são regidos pelas leis da República Federativa do Brasil.
+
+                                            <br />
+                                            <br />
+
+
+                                            12.2.         Para todos os assuntos atinentes aos TERMOS DE USO, POLÍTICA DE PRIVACIDADE e todo qualquer vínculo jurídico oriundo da utilização da PLATAFORMA, fica eleito o Foro da Comarca da Cidade de São Paulo/SP, exceto demandas formuladas por USUÁRIO que se enquadre no conceito legal de consumidor, que poderá submeter tais demandas ao foro de seu domicílio.
+
+                                            <br />
+                                            <br />
+
+
+                                            12.3.         O USUÁRIO que tiver alguma dúvida ou reclamação relacionada a estes TERMOS DE USO ou a POLÍTICA DE PRIVACIDADE, pode entrar em contato através do e-mail sac@chateaudupet.com.br
+                                        <p />
+                                        <br />
+                                        <br />
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                    POLÍTICAS DE PRIVACIDADE
+                                </button>
+                            </h2>
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlush">
+
+                                <div class="accordion-body">
+                                    <h1>POLÍTICAS DE PRIVACIDADE</h1>
+                                    <p>
+                                        Pelo presente instrumento, CHATEAU DU PET., inscrita no CNPJ/MF n.º, com sede na Rua do Oratório, n.º 426, Mooca, CEP 03116-000, São Paulo/SP, doravante denominada CHATEAU, estabelece o presente instrumento denominado POLÍTICAS DE PRIVACIDADE (“POLÍTICAS DE PRIVACIDADE”), conforme as condições abaixo estabelecidas.
+                                    </p>
+                                    <h2>1.    ACEITAÇÃO </h2>
+
+                                    <p>
+                                        1.1.       O USUÁRIO fica ciente e concorda que ao clicar na opção “EU ACEITO”, navegar na PLATAFORMA ou acessar o seu conteúdo, automaticamente terá aderido e concordado em se submeter integralmente às condições destas POLÍTICAS DE PRIVACIDADE.
+<br />
+<br />
+
+ 
+
+1.2.       A aceitação destas POLÍTICAS DE PRIVACIDADE é absolutamente indispensável à utilização da PLATAFORMA.
+
+<br />
+<br />
+ 
+
+1.3.       Ao aceitar estas POLÍTICAS DE PRIVACIDADE, o USUÁRIO reconhece que a PEGU poderá coletar, manter, usar e tratar seus dados e informações por ele inserida na PLATAFORMA.
+<br />
+<br />
+
+ 
+
+1.4.       Estas POLÍTICAS DE PRIVACIDADE é parte integrante dos TERMOS DE USO da PLATAFORMA.
+
+                                    </p>
+<h2>   2.    UTILIZAÇÃO DE DADOS E INFORMAÇÕES   </h2>
+
+                                    <p>
+ 
+
+2.1.       O USUÁRIO concorda que a CHATEAU pode usar os seus dados, inclusive os dados pessoais, para suas operações internas, como o gerenciamento da sua conta, o atendimento ao cliente, comunicação entre CHATEAU e USUÁRIO, entendimento das necessidades do USUÁRIO, melhoria do conteúdo e dos serviços da PLATAFORMA.
+
+<br />
+ 
+<br />
+
+2.2.       As informações são fornecidas pelo USUÁRIO ao se cadastrar na PLATAFORMA, assim como também poderá a CHATEAU coletar sistemicamente dados do USUÁRIO, quando ele navegar na PLATAFORMA.
+<br />
+
+<br />
+ 
+
+2.3.       Seguem abaixo exemplos de informações que o USUÁRIO poderá fornecer à CHATEAU: Nome completo, apelido, imagem pessoal (foto pessoal ou foto do documento), formação profissional, experiência profissional, vídeo currículo, fotos de trabalhos, número do documento de identidade e do CPF, número de telefone,
+<br />
+<br />
+
+
+endereço, endereço de e-mail, detalhes da conta bancária e sobre meios de pagamento e localização;
+<br />
+<br />
+
+ 
+
+2.4.       Seguem abaixo exemplos de dados que a CHATEAU poderá coletar do USUÁRIO automaticamente via PLATAFORMA:
+
+
+ 
+
+a)    Dados dos computadores ou dispositivo a partir dos quais o USUÁRIO acessa a PLATAFORMA, tais como a versão do navegador ou o sistema operacional, configurações e parâmetros, endereço IP da internet que utiliza ao se conectar à PLATAFORMA.
+<br />
+<br /> 
+b)    Localização do USUÁRIO (geolocalização).
+ <p/> 
+                                        
+ <p> 
+
+2.5.       Constam a seguir exemplos de dados do USUÁRIO que a CHATEAU pode coletar por outros meios:
+<br />
+
+a)    Informações coletadas para fins de prevenção de fraudes e cumprimento dos regimes de informações;
+<br />
+
+b)    Informações de crédito obtidas a partir de bases de risco de crédito e/ou fontes de acesso público;
+<br />
+
+c)    Dados utilizados para validação de identidade, obtidos a partir de fontes seguras, como órgãos governamentais;
+
+<br />
+<br />
+
+2.6.       A PLATAFORMA não coleta os dados relacionados a cartões de créditos, tais como número, data de validade, dentre outras. Estes dados são informados diretamente para as instituições financeiras e/ou empresas de Meios de Pagamento, parceiras da PLATAFORMA, porém a CHATEAU não armazena ou utiliza tais dados. Entretanto a PLATAFORMA coleta os dados para integração com o gateway de pagamento, com o armazenamento do token gerado para futuras recargas automáticas.
+<br />
+<br />
+
+ 
+
+2.7.       As informações capturadas por meio da PLATAFORMA serão utilizadas, preponderantemente, com as seguintes finalidades:
+                                
+<br />
+<br />
+ 
+
+·                     permitir ao USUÁRIO navegar ou realizar as operações disponibilizadas na PLATAFORMA;
+<br />
+
+·                     viabilizar o fornecimento de produtos e serviços pelas PARCEIRAS;
+<br />
+
+·                     identificar o perfil, desejos ou necessidades do USUÁRIO;
+<br />
+
+·                     realizar estatísticas genéricas;
+<br />
+
+·                     desenvolver estudos internos sobre os interesses, comportamentos e demografia do USUÁRIO;
+
+<br />
+
+·                     assegurar o entendimento dos TERMOS DE USO e da legislação aplicável;
+
+ 
+                                
+<br />
+<br />
+
+2.8.       A CHATEAU disponibilizará os dados, as imagens, e os vídeos do USUÁRIO prestador de serviços ao USUARIO contratante dos serviços, bem como aos sites http://chateaudupet.com.br/ , para a publicação dos anúncios das atividades oferecidas pelo USUÁRIO.
+
+                                 
+<br />
+<br />
+
+2.9.       Com exceção dos sites acima, a CHATEAU não disponibiliza a terceiros dados do USUÁRIO ou a ele relacionados, com a identificação individual do USUÁRIO sem seu prévio consentimento, com exceção dos casos previstos em lei ou nos TERMOS DE USO.
+
+                                 
+<br />
+<br />
+
+2.10.    Ressalvadas as hipóteses acima, caso a CHATEAU deseje repassar a terceiros informações que não sejam de identificação individual do USUÁRIO (como por exemplo, demográficas e estatísticas), pode assim proceder sem a autorização prévia do USUÁRIO.
+
+                                    </p>
+                                   <h2>     3.    UTILIZAÇÃO DE COOKIES</h2>
+                                    <p>
+                                
+<br />
+<br />
+
+3.1.       O USUÁRIO ao se cadastrar na PLATAFORMA, automaticamente concorda com a coleta e o processamento de informações e dados pessoais, tais como a colocação de cookies e pixels em seus dispositivos (computadores, tablets, entre outros).
+
+                                
+<br />
+<br />
+
+3.2.       Um cookie é um pedaço de informação de programação contido em um arquivo de texto pequeno que é armazenado em seu navegador de internet ou em outro lugar em seu disco rígido, e não armazenam dados pessoais. Além de cookies, a PLATAFORMA utiliza outras tecnologias de identificação, como "pixel tag" (bacons ou pixels) que são partes do código JavaScript instalados em websites ou no corpo de um e-mail, com a finalidade de rastrear atividades dos usuários
+
+                                
+<br />
+<br />
+
+3.3.       Na PLATAFORMA, o uso de cookies e pixels é feito preponderantemente para: (i) verificar sua conta e determinar quando o USUÁRIO está conectado; (ii) reconhecer um USUÁRIO constante e melhorar a experiência no uso dos serviços oferecidos na PLATAFORMA; e (iii) reconhecer seu sistema operacional, versão de navegador e endereço de IP do USUÁRIO. Os cookies e pixels também podem ser usados para ajudar a CHATEAU a medir o desempenho dos anúncios veiculados na PLATAFORMA.
+
+                                
+<br />
+<br />
+
+3.4.       O USUÁRIO pode controlar a aceitação e o uso de cookies, alterando as configurações do seu navegador da internet, podendo aceitar todos os cookies, ser notificado quando um cookie é definido ou de rejeitar todos os cookies. Se preferir, o USUÁRIO pode apagar os cookies existentes em seu computador através do browser. Porém, se o USUÁRIO desativar os cookies, algumas funcionalidades e serviços da PLATAFORMA podem não funcionar perfeitamente.
+                                    <p />
+                                    
+<br />
+<br />
+<h2>  4.    DISPOSIÇÕES FINAIS</h2>
+ 
+                                    <p>
+                                        
+<br />
+<br />
+4.1.       Todos os itens destas POLÍTICAS DE PRIVACIDADE, TERMOS DE USO e todo qualquer vínculo jurídico oriundo da utilização da PLATAFORMA, são regidos pelas leis da República Federativa do Brasil.
+
+ 
+                                        
+<br />
+<br />
+4.2.       Para todos os assuntos atinente às POLÍTICAS DE PRIVACIDADE e TERMOS DE USO e todo qualquer vínculo jurídico oriundo da utilização da PLATAFORMA, fica eleito o Foro da Comarca da Cidade de São Paulo/SP, exceto demandas formuladas por USUÁRIO que se enquadre no conceito legal de consumidor, que poderá submeter tais demandas ao foro de seu domicílio
+
+ 
+<br />
+<br />
+4.3.       O USUÁRIO que tiver alguma dúvida ou reclamação relacionada a estas POLÍTICAS DE PRIVACIDADE ou TERMOS DE USO, pode entrar em contato através do e-mail chateaudupet.com.br.
+               
+                                    <p />
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+
+                    </div>
+                    <div class="modal-footer">
+                        <a id="Fechar" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Fechar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <form id="form1" runat="server"   >
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        
+    </form>
+        <footer>
+
+            <div class="custom-shape-divider-bottom-1618516495">
+                <svg   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+                    <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+                    <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+                </svg>
+            </div>
+
+            <div class="FaixaF ">
+                <div class=" CentroF " style="margin: auto;">
+                    <div class="bd-example container-xxl " style="min-height: 100px; padding: 0 20px 0 20px">
+                        <div class="row">
+
+                            <div class="col-8 col-md">
+                                <label class="menu"><a>Comunidade</a> </label>
+                                <ul class="list-group">
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                            <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z" />
+                                        </svg>
+                                        <label class="mnA"><a class="mnA" href="#">Profissionais</a></label></li>
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                            <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z" />
+                                        </svg>
+                                        <label class="mnA"><a class="mnA" href="#">Oportunidades</a></label></li>
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                            <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z" />
+                                        </svg>
+                                        <label class="mnA"><a class="mnA" href="#">Projetos</a></label></li>
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                            <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z" />
+                                        </svg>
+                                        <label class="mnA"><a class="mnA" href="#">Visualizar Empresas</a></label></li>
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                            <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z" />
+                                        </svg>
+                                        <label class="mnA"><a class="mnA" data-bs-target="#modalTermos" data-bs-toggle="modal">Termos de uso</a></label></li>
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                            <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z" />
+                                        </svg>
+                                        <label class="mnA"><a class="mnA" data-bs-target="#modalTermos" data-bs-toggle="modal">Política de privacidade</a></label></li>
+                                </ul>
+                            </div>
+                            <div class="col-4 col-md">
+                                <label class="menu"><a>Páginas</a></label>
+                                <ul class="  list-group ">
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                            <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z" />
+                                        </svg>
+                                        <label class="mnA"><a class="mnA" href="Index.aspx">Home</a></label></li>
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                            <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z" />
+                                        </svg>
+                                        <label class="mnA"><a class="mnA" href="Serviços.aspx">Serviços</a></label></li>
+
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                            <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z" />
+                                        </svg>
+                                        <label class="mnA"><a class="mnA" href="Sobre.aspx">Sobre</a></label></li>
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                            <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z" />
+                                        </svg>
+                                        <label class="mnA"><a class="mnA" href="Cadastro.aspx">Cadastro</a></label></li>
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-hash" viewBox="0 0 16 16">
+                                            <path d="M8.39 12.648a1.32 1.32 0 0 0-.015.18c0 .305.21.508.5.508.266 0 .492-.172.555-.477l.554-2.703h1.204c.421 0 .617-.234.617-.547 0-.312-.188-.53-.617-.53h-.985l.516-2.524h1.265c.43 0 .618-.227.618-.547 0-.313-.188-.524-.618-.524h-1.046l.476-2.304a1.06 1.06 0 0 0 .016-.164.51.51 0 0 0-.516-.516.54.54 0 0 0-.539.43l-.523 2.554H7.617l.477-2.304c.008-.04.015-.118.015-.164a.512.512 0 0 0-.523-.516.539.539 0 0 0-.531.43L6.53 5.484H5.414c-.43 0-.617.22-.617.532 0 .312.187.539.617.539h.906l-.515 2.523H4.609c-.421 0-.609.219-.609.531 0 .313.188.547.61.547h.976l-.516 2.492c-.008.04-.015.125-.015.18 0 .305.21.508.5.508.265 0 .492-.172.554-.477l.555-2.703h2.242l-.515 2.492zm-1-6.109h2.266l-.515 2.563H6.859l.532-2.563z" />
+                                        </svg>
+                                        <label class="mnA"><a class="mnA" href="Login.aspx">Login</a></label></li>
+                                </ul>
+                            </div>
+                            <div class=" col-8 col-md">
+                                <label class="menu"><a>Contato</a></label>
+                                <ul class="  list-group ">
+                                    <li class=" list-inline">
+
+
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+                                            <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+                                        </svg>
+                                        <label class="mnA"><a>(11) 2619-5637  </a></label>
+                                    </li>
+
+                                    <li class=" list-inline">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"></path>
+                                        </svg>
+                                        <label class="mnA"><a>sac@chateaudupet.com.br</a></label>
+                                    </li>
+
+                                </ul>
+                                <br />
+                                <a href="https://www.facebook.com/Chateau-Du-Pet-113685650407870" class=" row-cols-sm-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                                        <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z" />
+                                    </svg></a>
+                                <a href="https://www.instagram.com/chateaudupet/?hl=pt-br" class="row-cols-sm-4">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                                        <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z" />
+                                    </svg></a>
+
+                            </div>
+                            <div class="col-4 col-md">
+
+                                <img src="Imagens/pp.png" width="100" style="max-height: 100px;" class="d-block my-1" />
+                                <br />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z" />
+                                </svg>
+                                <label class="mnA"><a class="mnA" style="font-size: 10pt" href="https://www.chateaudupet.com.br">Visite nosso PET-SHOP!</a></label>
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="bd-example" style="margin: auto;">
+                                <br />
+                                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                    <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z" />
+                                    <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                                </svg>
+                                <label class="menu"><a style="color: white;">Endereço</a></label>
+                                <br />
+                                <br />
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14629.541702315722!2d-46.600461!3d-23.554597!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce594b95eddcef%3A0xcafbdac5346df73!2sR.%20do%20Orat%C3%B3rio%2C%20426%20-%20Mooca%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2003116-000%2C%20Brasil!5e0!3m2!1spt-BR!2sus!4v1618190538335!5m2!1spt-BR!2sus"
+                                    class=" container-fluid " height="300" style="border: 0;"></iframe>
+
+                            </div>
+                        </div>
+
+                        <h4 style="text-align: center; font-size: 10px;">© 2021 Chateau</h4>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+         
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="BootstrapJs/bootstrap.bundle.min.js"></script>
+
+
+</body>
+</html>

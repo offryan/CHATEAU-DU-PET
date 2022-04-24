@@ -1,0 +1,31 @@
+﻿ 
+.container {
+    display: flex;
+    max-height: 100%;
+    width: 100%;
+}
+
+.container__column {
+    flex: 1;
+    /* Space between columns */
+    margin: 0 8px;
+    /* Layout each column */
+    display: flex;
+    flex-direction: column;
+}
+
+.container__content {
+    /* Take available height */
+    flex: 1;
+}
+
+
+/*Faixa azul*/
+.Faixa-Azul {
+    width: 100%;
+    min-height: 100px;
+    max-height: 1700px;
+    background-color: #f27298;
+    margin: 0;
+    padding: 0;
+} 
