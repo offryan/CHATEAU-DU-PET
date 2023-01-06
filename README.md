@@ -9,6 +9,7 @@
 
 ### WEB SITE:
 
-- Cadrastra perfis de usuários para empresas e candidatos;
+- Cadastra perfis de usuários para empresas e candidatos;
+- Publicação de vagas nos usuários empresa;
 - Visão geral da empresa Chateau Du Pet, com Localização, horários de disponibilidade para visitas;
 - Chat para suporte online;
