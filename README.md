@@ -1,3 +1,5 @@
+Projeto acadêmico de conclusão de curso, onde o grupo precisou encontrar uma empresa para desenvolver uma aplicação completa.
+
 ### APP DESKTOP:
 
 - Cadastra usuários para empresas que buscam usuários cadandidatos para vagas de emprego;
