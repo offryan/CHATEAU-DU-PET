@@ -1,17 +1,19 @@
 Projeto acadêmico de conclusão de curso, onde o grupo precisou encontrar uma empresa para desenvolver uma aplicação completa.
 
+### Base do projeto: A rede de pet shop "Chateau Du Pet" buscava criar um ambiente onde outras empresas do ramo pet pudessem contratar candidatos com maior facilidade.
+
 ### APP DESKTOP:
 
-- Cadastra usuários para empresas que buscam usuários cadandidatos para vagas de emprego;
-- Área do usuário administrativo, que cria, edita, deleta e aprova os perfis das empresas;
+- Usuário da Empresa: Publicação, exclusão e edição de vagas | visualização dos currículos dos candidatos | edição do usuário empresa 
+- Usuário do Candidato: Candidatura para as vagas | edição dos seus perfís e currículos | Visualização das vagas já cadantidatadas
 
 ### APP MOBILE:
 
-- Visualiza vagas de emprego criadas pelos usuários "empresa"
+- Visualiza vagas de emprego criadas pelas empresas
 
 ### WEB SITE:
 
-- Cadastra perfis de usuários para empresas e candidatos;
-- Publicação de vagas nos usuários empresa;
-- Visão geral da empresa Chateau Du Pet, com Localização, horários de disponibilidade para visitas;
-- Chat para suporte online;
+- Galeria de Imagens de Pets;
+- Contato e Localização das unidades;
+- Depoimentos, avaliações e vídeos;
+- https://chateaudupet.com.br/
