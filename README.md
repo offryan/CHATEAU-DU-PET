@@ -1,4 +1,4 @@
-Projeto acadêmico de conclusão de curso, onde o grupo precisou encontrar uma empresa para desenvolver uma aplicação completa.
+Projeto acadêmico de conclusão de curso (TCC) onde encontramos um empregador real para o projeto (OBS: Apenas o website foi comprado)
 
 ### Base do projeto: A rede de pet shop "Chateau Du Pet" buscava criar um ambiente onde outras empresas do ramo pet pudessem contratar candidatos com maior facilidade.
 
@@ -16,4 +16,4 @@ Projeto acadêmico de conclusão de curso, onde o grupo precisou encontrar uma e
 - Galeria de Imagens de Pets;
 - Contato e Localização das unidades;
 - Depoimentos, avaliações e vídeos;
-- https://chateaudupet.com.br/
+- https://chateaudupet.com.br
