@@ -1,0 +1,8 @@
+@model (string? UrlImage, string? Sexo, int Tamanho)
+@{
+    // Sem foto cadastrada, usa uma das ilustrações do projeto original
+    var src = !string.IsNullOrWhiteSpace(Model.UrlImage) && Model.UrlImage.StartsWith("http")
+        ? Model.UrlImage
+        : Model.Sexo == "Feminino" ? "/img/undraw_female_avatar_w3jk.svg" : "/img/undraw_male_avatar_323b.svg";
+}
+<img src="@src" class="bd-placeholder-img rounded-circle bg-white" width="@Model.Tamanho" height="@Model.Tamanho" alt="" />

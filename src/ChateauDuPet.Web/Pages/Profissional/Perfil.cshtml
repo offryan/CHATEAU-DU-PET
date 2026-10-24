@@ -1,0 +1,81 @@
+@page
+@model ChateauDuPet.Web.Pages.Profissional.PerfilModel
+@{
+    ViewData["Title"] = "Meu currículo";
+    string[] formacoes = ["Ensino Fundamental", "Ensino Médio", "Técnico", "Superior Incompleto", "Superior Completo", "Pós-graduação"];
+    string[] contratos = ["CLT", "PJ", "Freelancer", "Estágio", "Temporário"];
+}
+
+<div class="container-lg py-4">
+    <a asp-page="Index" class="text-danger">&larr; Voltar ao painel</a>
+    <h1 class="mt-2">Meu currículo</h1>
+    <hr />
+
+    @if (Model.Erro is { } erro)
+    {
+        <div class="alert alert-danger">@erro</div>
+    }
+
+    <h3 class="h4">Dados pessoais</h3>
+    <form method="post" asp-page-handler="Dados" class="row g-3 mb-5">
+        <div class="col-md-6"><label asp-for="Dados.NmProfissional" class="form-label">Nome</label><input asp-for="Dados.NmProfissional" class="form-control" required /></div>
+        <div class="col-md-3"><label asp-for="Dados.NroTelefone" class="form-label">Telefone</label><input asp-for="Dados.NroTelefone" class="form-control" /></div>
+        <div class="col-md-3"><label asp-for="Dados.FormacaoEscolar" class="form-label">Formação</label><select asp-for="Dados.FormacaoEscolar" asp-items="@(new SelectList(formacoes))" class="form-select"><option value="">Selecione</option></select></div>
+        <div class="col-12"><label asp-for="Dados.DsBiografia" class="form-label">Biografia</label><textarea asp-for="Dados.DsBiografia" class="form-control" rows="3" maxlength="300" placeholder="Conte em poucas linhas sua experiência no mercado pet"></textarea></div>
+        <div class="col-md-6"><label asp-for="Dados.DsEndereco" class="form-label">Endereço</label><input asp-for="Dados.DsEndereco" class="form-control" /></div>
+        <div class="col-md-2"><label asp-for="Dados.NroEndereco" class="form-label">Número</label><input asp-for="Dados.NroEndereco" class="form-control" maxlength="6" /></div>
+        <div class="col-md-4"><label asp-for="Dados.DsComplemento" class="form-label">Complemento</label><input asp-for="Dados.DsComplemento" class="form-control" /></div>
+        <div class="col-md-3"><label asp-for="Dados.DsCEP" class="form-label">CEP</label><input asp-for="Dados.DsCEP" class="form-control" maxlength="9" /></div>
+        <div class="col-md-4"><label asp-for="Dados.DsBairro" class="form-label">Bairro</label><input asp-for="Dados.DsBairro" class="form-control" /></div>
+        <div class="col-md-3"><label asp-for="Dados.DsCidade" class="form-label">Cidade</label><input asp-for="Dados.DsCidade" class="form-control" /></div>
+        <div class="col-md-2"><label asp-for="Dados.DsUF" class="form-label">UF</label><input asp-for="Dados.DsUF" class="form-control" maxlength="2" /></div>
+        <div class="col-12 text-end"><button class="btn btn-primary">Salvar dados</button></div>
+    </form>
+
+    <h3 class="h4">Experiências</h3>
+    <ul class="list-group mb-3">
+        @foreach (var e in Model.Experiencias)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span><strong>@e.DsCargo</strong> · @e.DsEmpresa (@e.DsTipoContrato, @e.DsLocalidade)
+                    <br /><small class="text-muted">@e.DataInicio.ToString("MM/yyyy") – @(e.DataFinal?.ToString("MM/yyyy") ?? "atual")</small></span>
+                <form method="post" asp-page-handler="ExcluirExperiencia" asp-route-id="@e.IdExperiencia">
+                    <button class="btn btn-sm btn-outline-danger">Remover</button>
+                </form>
+            </li>
+        }
+        @if (Model.Experiencias.Count == 0) { <li class="list-group-item text-muted">Nenhuma experiência cadastrada.</li> }
+    </ul>
+    <form method="post" asp-page-handler="Experiencia" class="row g-2 mb-5 border rounded p-3 bg-white">
+        <div class="col-md-4"><input asp-for="NovaExperiencia.DsCargo" class="form-control" placeholder="Cargo" maxlength="50" required /></div>
+        <div class="col-md-4"><input asp-for="NovaExperiencia.DsEmpresa" class="form-control" placeholder="Empresa" maxlength="50" required /></div>
+        <div class="col-md-2"><select asp-for="NovaExperiencia.DsTipoContrato" asp-items="@(new SelectList(contratos))" class="form-select"></select></div>
+        <div class="col-md-2"><input asp-for="NovaExperiencia.DsLocalidade" class="form-control" placeholder="Cidade" maxlength="30" required /></div>
+        <div class="col-md-3"><label class="form-label small mb-0">Início</label><input asp-for="NovaExperiencia.DataInicio" type="date" class="form-control" required /></div>
+        <div class="col-md-3"><label class="form-label small mb-0">Fim (vazio = atual)</label><input asp-for="NovaExperiencia.DataFinal" type="date" class="form-control" /></div>
+        <div class="col-md-6 d-flex align-items-end justify-content-end"><button class="btn btn-outline-primary">Adicionar experiência</button></div>
+    </form>
+
+    <h3 class="h4">Certificados</h3>
+    <ul class="list-group mb-3">
+        @foreach (var c in Model.Certificados)
+        {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span><strong>@c.DsCurso</strong> · @c.DsInstituicao
+                    <br /><small class="text-muted">@c.DataInicio.ToString("yyyy") – @(c.DataConclusao?.ToString("yyyy") ?? "em andamento")</small></span>
+                <form method="post" asp-page-handler="ExcluirCertificado" asp-route-id="@c.IdCertificado">
+                    <button class="btn btn-sm btn-outline-danger">Remover</button>
+                </form>
+            </li>
+        }
+        @if (Model.Certificados.Count == 0) { <li class="list-group-item text-muted">Nenhum certificado cadastrado.</li> }
+    </ul>
+    <form method="post" asp-page-handler="Certificado" class="row g-2 mb-4 border rounded p-3 bg-white">
+        <div class="col-md-5"><input asp-for="NovoCertificado.DsCurso" class="form-control" placeholder="Curso" maxlength="50" required /></div>
+        <div class="col-md-5"><input asp-for="NovoCertificado.DsInstituicao" class="form-control" placeholder="Instituição" maxlength="100" required /></div>
+        <div class="col-md-12"><textarea asp-for="NovoCertificado.DsDescricao" class="form-control" rows="2" placeholder="Descrição" maxlength="1000" required></textarea></div>
+        <div class="col-md-3"><label class="form-label small mb-0">Início</label><input asp-for="NovoCertificado.DataInicio" type="date" class="form-control" required /></div>
+        <div class="col-md-3"><label class="form-label small mb-0">Conclusão (vazio = em andamento)</label><input asp-for="NovoCertificado.DataConclusao" type="date" class="form-control" /></div>
+        <div class="col-md-6 d-flex align-items-end justify-content-end"><button class="btn btn-outline-primary">Adicionar certificado</button></div>
+    </form>
+</div>

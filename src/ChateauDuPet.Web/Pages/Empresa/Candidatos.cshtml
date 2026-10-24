@@ -1,0 +1,39 @@
+@page "{id:int}"
+@model ChateauDuPet.Web.Pages.Empresa.CandidatosModel
+@{
+    ViewData["Title"] = $"Candidatos · {Model.Vaga.NmVaga}";
+}
+
+<div class="container-lg py-4">
+    <a asp-page="Index" class="text-danger">&larr; Voltar ao painel</a>
+    <h1 class="mt-2"># @Model.Vaga.NmVaga</h1>
+    <p class="text-muted">@Model.Candidatos.Count candidato@(Model.Candidatos.Count == 1 ? "" : "s")</p>
+    <hr />
+
+    @if (Model.Candidatos.Count == 0)
+    {
+        <p class="lead">Ninguém se candidatou ainda.</p>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-striped align-middle bg-white">
+                <thead>
+                    <tr><th>Nome</th><th>Formação</th><th>E-mail</th><th>Candidatou-se em</th><th></th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in Model.Candidatos)
+                    {
+                        <tr>
+                            <td>@c.NmProfissional</td>
+                            <td>@(c.FormacaoEscolar ?? "-")</td>
+                            <td><a href="mailto:@c.DsEmail">@c.DsEmail</a></td>
+                            <td>@c.DsData.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td><a href="/Profissionais/@c.FKProfissional" class="btn btn-primary btn-sm">Ver perfil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

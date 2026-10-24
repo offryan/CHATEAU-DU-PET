@@ -12,6 +12,20 @@
 3. Abra outra query, cole o conteúdo de `seed.sql` e clique em **Run**.
 4. Confira em **Table Editor**: devem aparecer as tabelas com 4 empresas, 4 profissionais e 4 vagas.
 
+## Restauração diária da demo
+
+As contas de demonstração são públicas, então qualquer visitante pode alterar ou apagar dados.
+O `seed.sql` guarda os dados dentro da função `resetar_demo()`, e no Supabase o `pg_cron`
+roda essa função todo dia às 06:00 UTC (03:00 em Brasília):
+
+```sql
+CREATE EXTENSION IF NOT EXISTS pg_cron;
+SELECT cron.schedule('resetar-demo-chateau', '0 6 * * *', 'SELECT public.resetar_demo()');
+```
+
+A função não pode ser chamada pela API pública nem pelo usuário do app; as chaves de login
+(`DataProtectionKeys`) são preservadas.
+
 ## Contas de demonstração
 
 Senha de todas: `demo1234`

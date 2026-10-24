@@ -1,0 +1,84 @@
+@page
+@model ChateauDuPet.Web.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Administração";
+}
+
+<div class="container-lg py-4">
+    <h1># Administração</h1>
+    <p class="text-muted">@Model.Profissionais.Count profissionais · @Model.Empresas.Count empresas · @Model.Vagas.Count vagas</p>
+    <hr />
+
+    <h2 class="h4">Profissionais</h2>
+    <div class="table-responsive mb-5">
+        <table class="table table-striped table-sm align-middle bg-white">
+            <thead><tr><th>Nome</th><th>Usuário</th><th>E-mail</th><th>Telefone</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var p in Model.Profissionais)
+                {
+                    <tr>
+                        <td>@p.NmProfissional</td>
+                        <td>@@@p.DsUser</td>
+                        <td>@p.DsEmail</td>
+                        <td>@UsuarioExtensions.Telefone(p.NroTelefone)</td>
+                        <td class="text-end text-nowrap">
+                            <a href="/Profissionais/@p.IdProfissional" class="btn btn-primary btn-sm">Ver mais</a>
+                            <form method="post" asp-page-handler="ExcluirProfissional" asp-route-id="@p.IdProfissional" class="d-inline"
+                                  onsubmit="return confirm('Excluir @p.NmProfissional e todo o currículo?')">
+                                <button class="btn btn-outline-danger btn-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="h4">Empresas</h2>
+    <div class="table-responsive mb-5">
+        <table class="table table-striped table-sm align-middle bg-white">
+            <thead><tr><th>Empresa</th><th>Recrutador</th><th>E-mail</th><th>CNPJ</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var e in Model.Empresas)
+                {
+                    <tr>
+                        <td>@e.NomeExibicao</td>
+                        <td>@e.NmRecrutador</td>
+                        <td>@e.DsEmail</td>
+                        <td>@(e.NroCNPJ ?? "-")</td>
+                        <td class="text-end">
+                            <form method="post" asp-page-handler="ExcluirEmpresa" asp-route-id="@e.IdEmpresa" class="d-inline"
+                                  onsubmit="return confirm('Excluir @e.NomeExibicao e todas as vagas dela?')">
+                                <button class="btn btn-outline-danger btn-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="h4">Vagas</h2>
+    <div class="table-responsive">
+        <table class="table table-striped table-sm align-middle bg-white">
+            <thead><tr><th>Vaga</th><th>Empresa</th><th>Publicada</th><th>Candidatos</th><th></th></tr></thead>
+            <tbody>
+                @foreach (var v in Model.Vagas)
+                {
+                    <tr>
+                        <td><a href="/Vagas/@v.IdVaga">@v.NmVaga</a></td>
+                        <td>@v.NomeEmpresa</td>
+                        <td>@v.DataPublicacao.ToString("dd/MM/yyyy")</td>
+                        <td>@v.TotalCandidatos</td>
+                        <td class="text-end">
+                            <form method="post" asp-page-handler="ExcluirVaga" asp-route-id="@v.IdVaga" class="d-inline"
+                                  onsubmit="return confirm('Excluir a vaga @v.NmVaga?')">
+                                <button class="btn btn-outline-danger btn-sm">Excluir</button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

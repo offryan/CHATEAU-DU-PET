@@ -1,0 +1,60 @@
+@page
+@model ChateauDuPet.Web.Pages.Empresa.IndexModel
+@{
+    ViewData["Title"] = "Painel da empresa";
+}
+
+<div class="container-lg py-4">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+        <h1 class="mb-0"># Olá, @Model.Empresa.NomeExibicao</h1>
+        <div class="d-flex gap-2">
+            <a asp-page="Perfil" class="btn btn-outline-secondary">Dados da empresa</a>
+            <a asp-page="Vaga" class="btn btn-danger">Publicar vaga</a>
+        </div>
+    </div>
+    <hr />
+
+    <h3 class="h4 mb-3">Suas vagas</h3>
+    @if (Model.Vagas.Count == 0)
+    {
+        <p class="lead">Você ainda não publicou vagas. <a asp-page="Vaga" class="text-danger">Publicar a primeira</a></p>
+    }
+    <div class="row">
+        @foreach (var vaga in Model.Vagas)
+        {
+            <div class="col-md-6 mb-3">
+                <div class="card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">@vaga.NmVaga</h5>
+                        <p class="text-muted small mb-2">@vaga.DsTipoRegistro · publicada em @vaga.DataPublicacao.ToString("dd/MM/yyyy")</p>
+                        <p class="card-text flex-grow-1">@vaga.DsDescricao</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a asp-page="Candidatos" asp-route-id="@vaga.IdVaga" class="btn btn-primary">
+                                @vaga.TotalCandidatos candidato@(vaga.TotalCandidatos == 1 ? "" : "s")
+                            </a>
+                            <a asp-page="Vaga" asp-route-id="@vaga.IdVaga" class="btn btn-outline-secondary">Editar</a>
+                            <form method="post" asp-page-handler="Excluir" asp-route-id="@vaga.IdVaga"
+                                  onsubmit="return confirm('Excluir a vaga @vaga.NmVaga? As candidaturas também serão apagadas.')">
+                                <button class="btn btn-outline-danger">Excluir</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <h3 class="h4 mt-4 mb-3">Profissionais</h3>
+    <hr class="featurette-divider">
+    <div class="row">
+        @foreach (var pro in Model.Profissionais)
+        {
+            <div class="col-sm-6 col-md-4 col-xl-3 mb-4 text-center">
+                <partial name="_Avatar" model="(pro.UrlImage, pro.DsSexo, 120)" />
+                <h3 class="h5 mt-2 mb-1">@pro.NmProfissional</h3>
+                <p class="text-muted small">@(pro.DsBiografia ?? pro.FormacaoEscolar ?? "Perfil ainda não preenchido")</p>
+                <a class="btn btn-primary btn-sm" href="/Profissionais/@pro.IdProfissional">Ver mais</a>
+            </div>
+        }
+    </div>
+</div>

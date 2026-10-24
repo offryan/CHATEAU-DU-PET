@@ -1,0 +1,50 @@
+@page "/Profissionais/{id:int}"
+@model ChateauDuPet.Web.Pages.Profissionais.DetalheModel
+@{
+    ViewData["Title"] = Model.Perfil.NmProfissional;
+    var p = Model.Perfil;
+}
+
+<div class="container-lg py-4">
+    <div class="border rounded shadow-sm bg-white p-4">
+        <div class="d-flex flex-wrap align-items-center gap-4 mb-3">
+            <partial name="_Avatar" model="(p.UrlImage, p.DsSexo, 120)" />
+            <div>
+                <h1 class="mb-1">@p.NmProfissional</h1>
+                <p class="text-muted mb-1">@@@p.DsUser · @(p.FormacaoEscolar ?? "Formação não informada")@(p.DsCidade is { } cidade ? $" · {cidade}/{p.DsUF}" : "")</p>
+                @if (Model.MostrarContato)
+                {
+                    <p class="mb-0"><a href="mailto:@p.DsEmail">@p.DsEmail</a> · @UsuarioExtensions.Telefone(p.NroTelefone)</p>
+                }
+            </div>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(p.DsBiografia))
+        {
+            <p class="lead">@p.DsBiografia</p>
+        }
+
+        <h3 class="h4 mt-4"># Experiências</h3>
+        <hr />
+        @if (Model.Experiencias.Count == 0) { <p class="text-muted">Nenhuma experiência informada.</p> }
+        @foreach (var e in Model.Experiencias)
+        {
+            <div class="mb-3">
+                <strong>@e.DsCargo</strong> · @e.DsEmpresa
+                <div class="text-muted small">@e.DsTipoContrato · @e.DsLocalidade · @e.DataInicio.ToString("MM/yyyy") – @(e.DataFinal?.ToString("MM/yyyy") ?? "atual")</div>
+            </div>
+        }
+
+        <h3 class="h4 mt-4"># Certificados</h3>
+        <hr />
+        @if (Model.Certificados.Count == 0) { <p class="text-muted">Nenhum certificado informado.</p> }
+        @foreach (var c in Model.Certificados)
+        {
+            <div class="mb-3">
+                <strong>@c.DsCurso</strong> · @c.DsInstituicao
+                <div class="text-muted small">@c.DataInicio.ToString("yyyy") – @(c.DataConclusao?.ToString("yyyy") ?? "em andamento")</div>
+                <p class="mb-0">@c.DsDescricao</p>
+            </div>
+        }
+    </div>
+</div>

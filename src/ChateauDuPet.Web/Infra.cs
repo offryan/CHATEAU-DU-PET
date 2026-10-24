@@ -35,6 +35,14 @@ public static class UsuarioExtensions
             Enum.Parse<TipoUsuario>(principal.FindFirstValue(ClaimTypes.Role)!));
     }
 
+    /// <summary>11987654321 → (11) 98765-4321</summary>
+    public static string Telefone(string? numero) => numero switch
+    {
+        { Length: 11 } n => $"({n[..2]}) {n[2..7]}-{n[7..]}",
+        { Length: 10 } n => $"({n[..2]}) {n[2..6]}-{n[6..]}",
+        _ => numero ?? ""
+    };
+
     public static string PainelUrl(this UsuarioLogado u) => u.Tipo switch
     {
         TipoUsuario.Empresa => "/Empresa",

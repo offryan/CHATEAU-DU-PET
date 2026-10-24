@@ -1,0 +1,52 @@
+@page "{id:int?}"
+@model ChateauDuPet.Web.Pages.Empresa.VagaModel
+@{
+    ViewData["Title"] = Model.Form.IdVaga == 0 ? "Publicar vaga" : "Editar vaga";
+    string[] experiencias = ["Até 1 ano", "De 1 a 2 anos", "De 3 a 4 anos", "Mais de 5 anos"];
+    string[] registros = ["CLT", "Freelancer", "Temporário", "PJ"];
+    string[] sexos = ["Indiferente", "Masculino", "Feminino"];
+    string[] validades = ["1 semana", "15 dias", "1 mês", "2 meses"];
+}
+
+<div class="container-lg py-4">
+    <a asp-page="Index" class="text-danger">&larr; Voltar ao painel</a>
+    <h1 class="mt-2">@ViewData["Title"]</h1>
+    <hr />
+
+    @if (Model.Erro is { } erro)
+    {
+        <div class="alert alert-danger">@erro</div>
+    }
+
+    <form method="post" class="row g-3">
+        <input type="hidden" asp-for="Form.IdVaga" />
+        <div class="col-md-6">
+            <label asp-for="Form.NmVaga" class="form-label">Título</label>
+            <input asp-for="Form.NmVaga" class="form-control" maxlength="100" required />
+        </div>
+        <div class="col-md-3">
+            <label asp-for="Form.DsExperiencia" class="form-label">Nível de experiência</label>
+            <select asp-for="Form.DsExperiencia" asp-items="@(new SelectList(experiencias))" class="form-select"></select>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="Form.DsTipoRegistro" class="form-label">Tipo de registro</label>
+            <select asp-for="Form.DsTipoRegistro" asp-items="@(new SelectList(registros))" class="form-select"></select>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="Form.DsSexo" class="form-label">Sexo</label>
+            <select asp-for="Form.DsSexo" asp-items="@(new SelectList(sexos))" class="form-select"></select>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="Form.Validade" class="form-label">Validade</label>
+            <select asp-for="Form.Validade" asp-items="@(new SelectList(validades))" class="form-select"></select>
+        </div>
+        <div class="col-12">
+            <label asp-for="Form.DsDescricao" class="form-label">Descrição</label>
+            <textarea asp-for="Form.DsDescricao" class="form-control" rows="6" maxlength="4000" required></textarea>
+        </div>
+        <div class="col-12 d-flex justify-content-end gap-2">
+            <a asp-page="Index" class="btn">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+</div>

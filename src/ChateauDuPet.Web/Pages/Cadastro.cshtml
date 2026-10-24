@@ -1,0 +1,125 @@
+@page
+@model CadastroModel
+@{
+    ViewData["Title"] = "Cadastro";
+}
+
+<div class="Centro container-xxl py-4" style="margin: auto;">
+    <form method="post" class="row g-3" style="margin: 0 10px">
+        <span class="mb-3 fs-4">
+            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
+            </svg>
+            Cadastro
+        </span>
+
+        @if (Model.Erro is { } erro)
+        {
+            <div class="col-12"><div class="alert alert-danger mb-0">@erro</div></div>
+        }
+
+        <div class="col-md-4">
+            <label asp-for="Form.Nome" class="form-label">Nome</label>
+            <input asp-for="Form.Nome" class="form-control" maxlength="100" />
+            <span asp-validation-for="Form.Nome" class="text-danger small"></span>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="Form.Usuario" class="form-label">Usuário</label>
+            <div class="input-group">
+                <span class="input-group-text">@@</span>
+                <input asp-for="Form.Usuario" class="form-control" maxlength="50" />
+            </div>
+            <span asp-validation-for="Form.Usuario" class="text-danger small"></span>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="Form.Tipo" class="form-label">Tipo de usuário</label>
+            <select asp-for="Form.Tipo" class="form-select" id="tipo">
+                <option value="">Selecione uma opção</option>
+                <option value="Empresa">Empresa</option>
+                <option value="Profissional">Profissional</option>
+            </select>
+            <span asp-validation-for="Form.Tipo" class="text-danger small"></span>
+        </div>
+        <div class="col-md-2">
+            <label asp-for="Form.Nascimento" class="form-label">Data de nascimento</label>
+            <input asp-for="Form.Nascimento" type="date" class="form-control" />
+            <span asp-validation-for="Form.Nascimento" class="text-danger small"></span>
+        </div>
+
+        <div class="col-md-2">
+            <label asp-for="Form.Cpf" class="form-label">CPF</label>
+            <input asp-for="Form.Cpf" class="form-control" maxlength="14" placeholder="000.000.000-00" />
+            <span asp-validation-for="Form.Cpf" class="text-danger small"></span>
+        </div>
+        <div class="col-md-2">
+            <label asp-for="Form.Telefone" class="form-label">Telefone</label>
+            <input asp-for="Form.Telefone" class="form-control" maxlength="15" placeholder="(11) 90000-0000" />
+            <span asp-validation-for="Form.Telefone" class="text-danger small"></span>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="Form.Sexo" class="form-label">Sexo</label>
+            <select asp-for="Form.Sexo" class="form-select">
+                <option value="">Selecione uma opção</option>
+                <option>Masculino</option>
+                <option>Feminino</option>
+                <option>Prefiro não informar</option>
+            </select>
+            <span asp-validation-for="Form.Sexo" class="text-danger small"></span>
+        </div>
+        <div class="col-md-4">
+            <label asp-for="Form.Email" class="form-label">E-mail</label>
+            <input asp-for="Form.Email" type="email" class="form-control" maxlength="100" />
+            <span asp-validation-for="Form.Email" class="text-danger small"></span>
+        </div>
+
+        <div class="col-md-5 campos-empresa">
+            <label asp-for="Form.NomeFantasia" class="form-label">Nome da empresa</label>
+            <input asp-for="Form.NomeFantasia" class="form-control" maxlength="100" />
+        </div>
+        <div class="col-md-3 campos-empresa">
+            <label asp-for="Form.Cnpj" class="form-label">CNPJ (opcional)</label>
+            <input asp-for="Form.Cnpj" class="form-control" maxlength="18" placeholder="00.000.000/0000-00" />
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="col-md-3">
+            <label asp-for="Form.Senha" class="form-label">Senha *</label>
+            <input asp-for="Form.Senha" type="password" class="form-control" autocomplete="new-password" />
+            <span asp-validation-for="Form.Senha" class="text-danger small"></span>
+        </div>
+        <div class="col-md-3">
+            <label asp-for="Form.ConfirmarSenha" class="form-label">Confirmar senha *</label>
+            <input asp-for="Form.ConfirmarSenha" type="password" class="form-control" autocomplete="new-password" />
+            <span asp-validation-for="Form.ConfirmarSenha" class="text-danger small"></span>
+        </div>
+
+        <div class="col-12">
+            <div class="form-check">
+                <input asp-for="Form.AceitaPolitica" class="form-check-input" />
+                <label asp-for="Form.AceitaPolitica" class="form-check-label"><a data-bs-target="#modalTermos" class="link" data-bs-toggle="modal" href="#">Aceito</a> a política de privacidade.</label>
+            </div>
+            <div class="form-check">
+                <input asp-for="Form.AceitaTermos" class="form-check-input" />
+                <label asp-for="Form.AceitaTermos" class="form-check-label"><a data-bs-target="#modalTermos" class="link" data-bs-toggle="modal" href="#">Aceito</a> os termos de uso.</label>
+            </div>
+            <span asp-validation-for="Form.AceitaTermos" class="text-danger small d-block"></span>
+        </div>
+
+        <div class="col-12 d-flex justify-content-end gap-2 mb-4">
+            <a href="/" class="btn" style="width: 100px">Cancelar</a>
+            <button type="submit" class="btn btn-primary" style="width: 110px">Cadastrar</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        // Os campos da empresa só aparecem quando o tipo "Empresa" é escolhido
+        const tipo = document.getElementById('tipo');
+        const alternar = () => document.querySelectorAll('.campos-empresa')
+            .forEach(c => c.style.display = tipo.value === 'Empresa' ? '' : 'none');
+        tipo.addEventListener('change', alternar);
+        alternar();
+    </script>
+}

@@ -1,0 +1,37 @@
+@page
+@model ChateauDuPet.Web.Pages.Empresa.PerfilModel
+@{
+    ViewData["Title"] = "Dados da empresa";
+}
+
+<div class="container-lg py-4">
+    <a asp-page="Index" class="text-danger">&larr; Voltar ao painel</a>
+    <h1 class="mt-2">Dados da empresa</h1>
+    <p class="text-muted">E-mail de acesso: @Model.Form.DsEmail · usuário @@@Model.Form.DsUser</p>
+    <hr />
+
+    @if (Model.Erro is { } erro)
+    {
+        <div class="alert alert-danger">@erro</div>
+    }
+
+    <form method="post" class="row g-3">
+        <div class="col-md-6"><label asp-for="Form.NmRecrutador" class="form-label">Nome do recrutador</label><input asp-for="Form.NmRecrutador" class="form-control" required /></div>
+        <div class="col-md-3"><label asp-for="Form.NroTelefone" class="form-label">Telefone</label><input asp-for="Form.NroTelefone" class="form-control" /></div>
+        <div class="col-md-6"><label asp-for="Form.DsNomeFantasia" class="form-label">Nome fantasia</label><input asp-for="Form.DsNomeFantasia" class="form-control" /></div>
+        <div class="col-md-6"><label asp-for="Form.DsRazaoSocial" class="form-label">Razão social</label><input asp-for="Form.DsRazaoSocial" class="form-control" /></div>
+        <div class="col-md-3"><label asp-for="Form.NroCNPJ" class="form-label">CNPJ</label><input asp-for="Form.NroCNPJ" class="form-control" /></div>
+        <div class="col-md-3"><label asp-for="Form.DsDataAbertura" class="form-label">Data de abertura</label><input asp-for="Form.DsDataAbertura" type="date" class="form-control" /></div>
+        <div class="col-md-6"><label asp-for="Form.DsEndereco" class="form-label">Endereço</label><input asp-for="Form.DsEndereco" class="form-control" /></div>
+        <div class="col-md-2"><label asp-for="Form.NroEndereco" class="form-label">Número</label><input asp-for="Form.NroEndereco" class="form-control" maxlength="6" /></div>
+        <div class="col-md-4"><label asp-for="Form.DsComplemento" class="form-label">Complemento</label><input asp-for="Form.DsComplemento" class="form-control" /></div>
+        <div class="col-md-3"><label asp-for="Form.DsCep" class="form-label">CEP</label><input asp-for="Form.DsCep" class="form-control" maxlength="9" /></div>
+        <div class="col-md-4"><label asp-for="Form.DsBairro" class="form-label">Bairro</label><input asp-for="Form.DsBairro" class="form-control" /></div>
+        <div class="col-md-3"><label asp-for="Form.DsCidade" class="form-label">Cidade</label><input asp-for="Form.DsCidade" class="form-control" /></div>
+        <div class="col-md-2"><label asp-for="Form.DsUF" class="form-label">UF</label><input asp-for="Form.DsUF" class="form-control" maxlength="2" /></div>
+        <div class="col-12 d-flex justify-content-end gap-2">
+            <a asp-page="Index" class="btn">Cancelar</a>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </div>
+    </form>
+</div>
