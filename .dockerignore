@@ -1,0 +1,11 @@
+**/bin/
+**/obj/
+**/.vs/
+.git/
+# Projeto Web Forms original e apps desktop/mobile não entram na imagem
+ChateauDuPet.*/
+!src/
+DESKTOP.UI/
+GeradorRelatorio/
+ProjetoIntegrador/
+src/ChateauDuPet.Tests/
