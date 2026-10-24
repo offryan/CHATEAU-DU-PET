@@ -16,6 +16,8 @@ Projeto acadêmico de conclusão de curso (TCC) onde encontramos um empregador r
 
 - Visualiza vagas de emprego criadas pelas empresas
 
+> 📱 Reescrito em 2026 em **.NET MAUI 10**: veja o [app mobile novo](#-app-mobile-versão-2026-em-net-maui) mais abaixo.
+
 ### WEB SITE:
 
 - Galeria de Imagens de Pets;
@@ -100,6 +102,28 @@ cd src && dotnet test
 
 ---
 
+## 📱 App mobile: versão 2026 em .NET MAUI
+
+O app Xamarin.Forms de 2021 foi reescrito em **.NET MAUI 10** num repositório próprio: **[offryan/chateau-du-pet-mobile](https://github.com/offryan/chateau-du-pet-mobile)**.
+
+https://github.com/user-attachments/assets/f57e9775-f1a2-4dfa-a64c-0eb34ffdba9b
+
+| | |
+|---|---|
+| 📥 **APK para Android** | [chateau-du-pet.apk](https://github.com/offryan/chateau-du-pet-mobile/releases/latest/download/chateau-du-pet.apk) (Android 6.0+) |
+| 🔗 **API do app** | https://chateau-du-pet-api.onrender.com/scalar |
+| 🗄️ **Banco** | O mesmo PostgreSQL desta demo web: o que é feito no app aparece aqui e vice-versa |
+
+O app original só mostrava vagas de exemplo fixas no código. A versão nova consome dados reais por uma API em ASP.NET Core 10:
+
+- **Visitante:** lista, busca e compartilha vagas
+- **Profissional:** se candidata, cancela, acompanha as candidaturas e vê o currículo
+- **Empresa:** vê as vagas publicadas e os candidatos de cada uma
+
+As contas de demonstração são as mesmas da tabela acima.
+
+---
+
 ## 📦 Versão original (2021)
 
 O código original continua na raiz do repositório, como histórico.
@@ -111,7 +135,7 @@ O código original continua na raiz do repositório, como histórico.
 | Website | ASP.NET MVC (.NET Framework 4.7.2), Razor, Bootstrap, JavaScript |
 | Portal de vagas | ASP.NET Web Forms (.NET Framework 4.7.2) |
 | App desktop | Windows Forms (.NET Framework 4.7.2) |
-| App mobile | Xamarin.Forms (Android) |
+| App mobile | Xamarin.Forms (Android); reescrito em .NET MAUI no [chateau-du-pet-mobile](https://github.com/offryan/chateau-du-pet-mobile) |
 | Banco de dados | SQL Server / Azure SQL (T-SQL) |
 | Relatórios | Console .NET 5 |
 
