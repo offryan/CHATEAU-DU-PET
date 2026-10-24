@@ -11,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Render injeta a porta na variável PORT
 if (Environment.GetEnvironmentVariable("PORT") is { Length: > 0 } porta)
-    builder.WebHost.UseUrls($"http://0.0.0.0:{porta}");
+    builder.WebHost.UseSetting("http_ports", porta);
 
 // String de conexão: variável DATABASE_URL (formato URI do Supabase) ou ConnectionStrings:Chateau
 var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL")
@@ -68,6 +68,18 @@ builder.Services.Configure<ForwardedHeadersOptions>(opcoes =>
 });
 
 var app = builder.Build();
+
+// Confere a conexão com o banco já na subida, para o problema aparecer no log do deploy
+try
+{
+    await using var conn = await app.Services.GetRequiredService<NpgsqlDataSource>().OpenConnectionAsync();
+    await using var cmd = new NpgsqlCommand("SELECT count(*) FROM Vaga", conn);
+    app.Logger.LogInformation("Banco conectado: {Vagas} vagas cadastradas", await cmd.ExecuteScalarAsync());
+}
+catch (Exception ex)
+{
+    app.Logger.LogCritical(ex, "Não foi possível conectar ao banco. Confira a variável DATABASE_URL.");
+}
 
 app.UseForwardedHeaders();
 if (!app.Environment.IsDevelopment())
