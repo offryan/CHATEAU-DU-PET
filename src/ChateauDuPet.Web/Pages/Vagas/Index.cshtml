@@ -1,0 +1,43 @@
+@page
+@model ChateauDuPet.Web.Pages.Vagas.IndexModel
+@{
+    ViewData["Title"] = "Vagas";
+}
+
+<div class="container-lg py-4">
+    <h1># Vagas</h1>
+    <hr />
+
+    <form method="get" class="row g-2 mb-4">
+        <div class="col-md-9">
+            <input name="busca" value="@Model.Busca" class="form-control" placeholder="Buscar por cargo ou descrição (ex.: veterinário)" />
+        </div>
+        <div class="col-md-3 d-grid">
+            <button type="submit" class="btn btn-outline-danger">Buscar</button>
+        </div>
+    </form>
+
+    @if (Model.Vagas.Count == 0)
+    {
+        <p class="lead">Nenhuma vaga encontrada@(string.IsNullOrWhiteSpace(Model.Busca) ? "." : $" para \"{Model.Busca}\".")</p>
+    }
+
+    @foreach (var vaga in Model.Vagas)
+    {
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm position-relative bg-white">
+            <div class="col p-4 d-flex flex-column position-static">
+                <strong class="d-inline-block mb-2 text-danger">@vaga.NomeEmpresa</strong>
+                <h3 class="mb-0">@vaga.NmVaga</h3>
+                <div class="mb-2 text-muted">
+                    @vaga.DsTipoRegistro · @vaga.DsExperiencia · publicada em @vaga.DataPublicacao.ToString("dd/MM/yyyy")
+                </div>
+                <p class="card-text mb-auto">@vaga.DsDescricao</p>
+                <a asp-page="Detalhe" asp-route-id="@vaga.IdVaga" class="stretched-link">ver mais</a>
+            </div>
+            <div class="col-auto d-none d-lg-flex flex-column justify-content-center text-center p-4 vaga-lateral">
+                <span class="fs-3">@vaga.TotalCandidatos</span>
+                <small>candidato@(vaga.TotalCandidatos == 1 ? "" : "s")</small>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,21 @@
+@using ChateauDuPet.Web
+@if (User.Logado() is { } usuario)
+{
+    <li class="nav-item col-6 col-md-auto d-md-none d-block">
+        <a class="nav-link p-2" href="@usuario.PainelUrl()">Meu painel</a>
+    </li>
+    <li class="nav-item col-6 col-md-auto d-md-none d-block">
+        <form method="post" asp-page="/Sair">
+            <button type="submit" class="nav-link p-2 btn btn-link">Sair</button>
+        </form>
+    </li>
+}
+else
+{
+    <li class="nav-item col-6 col-md-auto d-md-none d-block">
+        <a class="nav-link p-2" href="/Login">Login</a>
+    </li>
+    <li class="nav-item col-6 col-md-auto d-md-none d-block">
+        <a class="nav-link p-2" href="/Cadastro">Cadastrar</a>
+    </li>
+}

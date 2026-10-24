@@ -1,0 +1,13 @@
+@using ChateauDuPet.Web
+@if (User.Logado() is { } usuario)
+{
+    <a class="btn btn-outline-danger d-none d-md-block" href="@usuario.PainelUrl()" style="float: right; margin: 10px 0 0 10px">Meu painel</a>
+    <form method="post" asp-page="/Sair" class="d-none d-md-block" style="float: right; margin: 10px 0 0 10px">
+        <button type="submit" class="btn btn-outline-danger">Sair</button>
+    </form>
+}
+else
+{
+    <a class="btn btn-outline-danger d-none d-md-block" href="/Login" style="float: right; margin: 10px 0 0 10px">Login</a>
+    <a class="btn btn-outline-danger d-none d-md-block" href="/Cadastro" style="float: right; margin: 10px 0 0 10px">Cadastro</a>
+}

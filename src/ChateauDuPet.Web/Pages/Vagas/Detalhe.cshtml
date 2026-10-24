@@ -1,0 +1,58 @@
+@page "/Vagas/{id:int}"
+@model ChateauDuPet.Web.Pages.Vagas.DetalheModel
+@using ChateauDuPet.DTO
+@{
+    ViewData["Title"] = Model.Vaga.NmVaga;
+    var usuario = Model.Usuario;
+}
+
+<div class="container-lg py-4">
+    <a asp-page="Index" class="text-danger">&larr; Todas as vagas</a>
+
+    <div class="border rounded shadow-sm bg-white p-4 mt-3">
+        <strong class="d-inline-block mb-2 text-danger">@Model.Vaga.NomeEmpresa</strong>
+        <h1 class="mb-1">@Model.Vaga.NmVaga</h1>
+        <p class="text-muted">Publicada em @Model.Vaga.DataPublicacao.ToString("dd/MM/yyyy")@(Model.Vaga.CidadeEmpresa is { } cidade ? $" · {cidade}" : "")</p>
+
+        <dl class="row mb-4">
+            <dt class="col-sm-3">Contratação</dt><dd class="col-sm-9">@(Model.Vaga.DsTipoRegistro ?? "-")</dd>
+            <dt class="col-sm-3">Experiência</dt><dd class="col-sm-9">@(Model.Vaga.DsExperiencia ?? "-")</dd>
+            <dt class="col-sm-3">Sexo</dt><dd class="col-sm-9">@(Model.Vaga.DsSexo ?? "Indiferente")</dd>
+            <dt class="col-sm-3">Validade</dt><dd class="col-sm-9">@(Model.Vaga.Validade ?? "-")</dd>
+            <dt class="col-sm-3">Candidatos</dt><dd class="col-sm-9">@Model.Vaga.TotalCandidatos</dd>
+        </dl>
+
+        <h5>Descrição</h5>
+        <p style="white-space: pre-line">@Model.Vaga.DsDescricao</p>
+
+        @if (Model.Erro is { } erro)
+        {
+            <div class="alert alert-warning">@erro</div>
+        }
+
+        @if (usuario is null)
+        {
+            <a href="/Login?ReturnUrl=@Uri.EscapeDataString($"/Vagas/{Model.Vaga.IdVaga}")" class="btn btn-outline-danger">
+                Entre como profissional para se candidatar
+            </a>
+        }
+        else if (usuario.Tipo == TipoUsuario.Profissional)
+        {
+            <form method="post">
+                @if (Model.JaCandidatado)
+                {
+                    <p class="text-success fw-bold">Você já se candidatou a esta vaga.</p>
+                    <button asp-page-handler="Cancelar" class="btn btn-outline-secondary">Cancelar candidatura</button>
+                }
+                else
+                {
+                    <button asp-page-handler="Candidatar" class="btn btn-danger">Quero me candidatar</button>
+                }
+            </form>
+        }
+        else if (usuario.Tipo == TipoUsuario.Empresa && usuario.Id == Model.Vaga.FKEmpresa)
+        {
+            <a href="/Empresa/Candidatos/@Model.Vaga.IdVaga" class="btn btn-danger">Ver candidatos</a>
+        }
+    </div>
+</div>

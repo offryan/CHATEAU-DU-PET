@@ -116,6 +116,13 @@ CREATE TABLE Candidatos (
     UNIQUE (FKProfissional, FKVaga)
 );
 
+-- Chaves que o ASP.NET Core usa para proteger cookies de login e formulários.
+-- Ficam no banco para sobreviverem aos redeploys do container.
+CREATE TABLE DataProtectionKeys (
+    FriendlyName  TEXT PRIMARY KEY,
+    Xml           TEXT NOT NULL
+);
+
 CREATE INDEX ix_experiencia_profissional ON Experiencia (FKProfissional);
 CREATE INDEX ix_certificado_profissional ON Certificado (FKProfissional);
 CREATE INDEX ix_vaga_empresa             ON Vaga (FKEmpresa);
@@ -130,7 +137,7 @@ DO $$
 DECLARE t TEXT;
 BEGIN
     FOREACH t IN ARRAY ARRAY['tipouser','administrativo','profissional','experiencia',
-                             'certificado','empresa','vaga','candidatos'] LOOP
+                             'certificado','empresa','vaga','candidatos','dataprotectionkeys'] LOOP
         EXECUTE format('ALTER TABLE %I ENABLE ROW LEVEL SECURITY', t);
         IF EXISTS (SELECT 1 FROM pg_roles WHERE rolname = 'anon') THEN
             EXECUTE format('REVOKE ALL ON TABLE %I FROM anon, authenticated', t);
