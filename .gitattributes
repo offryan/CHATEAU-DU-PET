@@ -61,3 +61,18 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
+
+# Bibliotecas de terceiros copiadas no repositório (Bootstrap, jQuery, Popper,
+# Knockout, Modernizr, W3.CSS): ficam fora da barra de linguagens do GitHub,
+# que passa a refletir só o código escrito para o projeto.
+**/Scripts/** linguist-vendored
+**/BootstrapJs/** linguist-vendored
+**/bootstrapPag/** linguist-vendored
+**/Content/bootstrap* linguist-vendored
+ChateauDuPet.UI/js/** linguist-vendored
+**/bootstrap*.css linguist-vendored
+**/bootstrap*.js linguist-vendored
+**/jquery*.js linguist-vendored
+**/w3.css linguist-vendored
+*.min.js linguist-vendored
+*.min.css linguist-vendored
