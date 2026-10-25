@@ -151,7 +151,7 @@ ChateauDuPet.sln
 ├── DESKTOP.UI           → app desktop (empresa, candidato e administrador)
 ├── ChateauDuPet.SITE    → website institucional em ASP.NET MVC
 ├── ChateauDuPet.UI      → portal de vagas em ASP.NET Web Forms
-├── GeradorRelatorio     → geração de relatórios dos profissionais
+├── GeradorRelatorio     → geração de relatórios dos candidatos
 └── ProjetoIntegrador    → app mobile em Xamarin.Forms
 ```
 
