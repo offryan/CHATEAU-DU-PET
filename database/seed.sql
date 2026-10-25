@@ -7,9 +7,9 @@
 -- o que os visitantes alteraram com as contas públicas.
 --
 -- Contas de demonstração (senha de todas: demo1234)
---   Administrador: admin@exemplo.com
---   Empresa:       felipe@exemplo.com
---   Profissional:  jucelino@exemplo.com
+--   Administrador: admin@demo.com
+--   Empresa:       empresa@demo.com
+--   Profissional:  candidato@demo.com
 -- =============================================================================
 
 CREATE OR REPLACE FUNCTION resetar_demo() RETURNS void
@@ -28,12 +28,12 @@ BEGIN
 
     -- O hash abaixo é o BCrypt de "demo1234"
     INSERT INTO Administrativo (NmADM, DsEmail, SenhaADM) VALUES
-        ('Administrador Demo', 'admin@exemplo.com', '$2a$11$CYjS6DgzkrQa7TDoWh6DueDE7keBrEShD7Eq.Ifsr4g.LiMTDm0su');
+        ('Administrador Demo', 'admin@demo.com', '$2a$11$CYjS6DgzkrQa7TDoWh6DueDE7keBrEShD7Eq.Ifsr4g.LiMTDm0su');
 
     INSERT INTO Empresa (NmRecrutador, DsUser, DsEmail, NroCPF, SenhaEmpresa, NroTelefone, DtNascimento, DsSexo,
                          DsEndereco, NroEndereco, DsComplemento, DsCep, DsBairro, DsCidade, DsUF,
                          NroCNPJ, DsNomeFantasia, DsRazaoSocial, DsDataAbertura) VALUES
-        ('Felipe',   'salvadoresdobem', 'felipe@exemplo.com',   '23669856899', '$2a$11$CYjS6DgzkrQa7TDoWh6DueDE7keBrEShD7Eq.Ifsr4g.LiMTDm0su', '11955668647', '2001-09-03', 'Masculino',
+        ('Felipe',   'salvadoresdobem', 'empresa@demo.com',     '23669856899', '$2a$11$CYjS6DgzkrQa7TDoWh6DueDE7keBrEShD7Eq.Ifsr4g.LiMTDm0su', '11955668647', '2001-09-03', 'Masculino',
          'Rua Dom Miguel', '32', 'Comercial 32', '08180-000', 'Tatuapé', 'São Paulo', 'SP',
          '12.345.678/0001-01', 'Salvadores do Bem', 'Salvadores do Bem Ltda', '2001-01-01'),
         ('Marcilia', 'linhavoadoramed', 'marcilia@exemplo.com', '55699866355', '$2a$11$CYjS6DgzkrQa7TDoWh6DueDE7keBrEShD7Eq.Ifsr4g.LiMTDm0su', '11955668643', '2001-09-01', 'Feminino',
@@ -48,7 +48,7 @@ BEGIN
 
     INSERT INTO Profissional (NmProfissional, DsUser, DsEmail, NroCPF, SenhaProfissional, NroTelefone, DtNascimento, DsSexo,
                               DsBiografia, FormacaoEscolar, DsEndereco, NroEndereco, DsComplemento, DsCEP, DsBairro, DsCidade, DsUF) VALUES
-        ('Jucelino Silva',    'jucelino', 'jucelino@exemplo.com', '44455566677', '$2a$11$CYjS6DgzkrQa7TDoWh6DueDE7keBrEShD7Eq.Ifsr4g.LiMTDm0su', '11911290115', '1995-03-09', 'Masculino',
+        ('Jucelino Silva',    'jucelino', 'candidato@demo.com',   '44455566677', '$2a$11$CYjS6DgzkrQa7TDoWh6DueDE7keBrEShD7Eq.Ifsr4g.LiMTDm0su', '11911290115', '1995-03-09', 'Masculino',
          'No ramo pet desde a infância, apaixonado por animais.', 'Superior Completo', 'Rua Alameda Filho', '47', 'Casa 3', '08180-180', 'Lajeado', 'São Paulo', 'SP'),
         ('Armando Pereira',   'armando',  'armando@exemplo.com',  '33355566622', '$2a$11$CYjS6DgzkrQa7TDoWh6DueDE7keBrEShD7Eq.Ifsr4g.LiMTDm0su', '11911290117', '1995-01-05', 'Masculino',
          'Desde criança apaixonado pelos bichos do mundo.', 'Superior Completo', 'Rua Quatro', '155', 'Sem complemento', '08180-150', 'São Martinho', 'São Paulo', 'SP'),

@@ -6,9 +6,9 @@ namespace ChateauDuPet.Tests;
 public class AutenticacaoTests(BancoFixture banco)
 {
     [Theory]
-    [InlineData("admin@exemplo.com", TipoUsuario.Administrativo)]
-    [InlineData("felipe@exemplo.com", TipoUsuario.Empresa)]
-    [InlineData("JUCELINO@exemplo.com", TipoUsuario.Profissional)] // e-mail sem diferenciar maiúsculas
+    [InlineData("admin@demo.com", TipoUsuario.Administrativo)]
+    [InlineData("empresa@demo.com", TipoUsuario.Empresa)]
+    [InlineData("CANDIDATO@demo.com", TipoUsuario.Profissional)] // e-mail sem diferenciar maiúsculas
     public async Task Contas_de_demo_entram_com_o_tipo_certo(string email, TipoUsuario tipo)
     {
         var usuario = await banco.Autenticacao().EntrarAsync(email, "demo1234");
@@ -18,7 +18,7 @@ public class AutenticacaoTests(BancoFixture banco)
     }
 
     [Theory]
-    [InlineData("felipe@exemplo.com", "senha-errada")]
+    [InlineData("empresa@demo.com", "senha-errada")]
     [InlineData("ninguem@exemplo.com", "demo1234")]
     [InlineData("", "")]
     public async Task Login_invalido_retorna_null(string email, string senha)
@@ -65,7 +65,7 @@ public class CadastroTests(BancoFixture banco)
     public async Task Email_repetido_e_recusado()
     {
         var dup = NovoProfissional("03");
-        dup.DsEmail = "jucelino@exemplo.com";
+        dup.DsEmail = "candidato@demo.com";
 
         var r = await banco.Cadastro().CadastrarProfissionalAsync(dup, "senhaforte3");
 
@@ -86,7 +86,7 @@ public class CadastroTests(BancoFixture banco)
 [Collection("Banco")]
 public class VagaTests(BancoFixture banco)
 {
-    private static readonly UsuarioLogado Felipe = new(1, "Salvadores do Bem", "felipe@exemplo.com", TipoUsuario.Empresa);
+    private static readonly UsuarioLogado Felipe = new(1, "Salvadores do Bem", "empresa@demo.com", TipoUsuario.Empresa);
     private static readonly UsuarioLogado Marcilia = new(2, "Linha Voadora Med", "marcilia@exemplo.com", TipoUsuario.Empresa);
 
     [Fact]

@@ -35,9 +35,9 @@ A plataforma de vagas foi migrada de Web Forms + SQL Server para **.NET 8 + Post
 
 | Perfil | E-mail | Senha |
 |---|---|---|
-| Empresa | `felipe@exemplo.com` | `demo1234` |
-| Profissional | `jucelino@exemplo.com` | `demo1234` |
-| Administrador | `admin@exemplo.com` | `demo1234` |
+| Empresa | `empresa@demo.com` | `demo1234` |
+| Profissional | `candidato@demo.com` | `demo1234` |
+| Administrador | `admin@demo.com` | `demo1234` |
 
 Os dados de demonstração são restaurados todos os dias às 3h.
 

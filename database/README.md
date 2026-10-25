@@ -32,9 +32,9 @@ Senha de todas: `demo1234`
 
 | Perfil | E-mail |
 |---|---|
-| Administrador | `admin@exemplo.com` |
-| Empresa | `felipe@exemplo.com` |
-| Profissional | `jucelino@exemplo.com` |
+| Administrador | `admin@demo.com` |
+| Empresa | `empresa@demo.com` |
+| Profissional | `candidato@demo.com` |
 
 ## Modelo
 
