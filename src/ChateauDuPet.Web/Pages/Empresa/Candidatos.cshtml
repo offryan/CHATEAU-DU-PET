@@ -29,7 +29,7 @@
                             <td>@(c.FormacaoEscolar ?? "-")</td>
                             <td><a href="mailto:@c.DsEmail">@c.DsEmail</a></td>
                             <td>@c.DsData.ToString("dd/MM/yyyy HH:mm")</td>
-                            <td><a href="/Profissionais/@c.FKProfissional" class="btn btn-primary btn-sm">Ver perfil</a></td>
+                            <td class="text-nowrap"><a href="/Profissionais/@c.FKProfissional" class="btn btn-primary btn-sm">Ver perfil</a></td>
                         </tr>
                     }
                 </tbody>

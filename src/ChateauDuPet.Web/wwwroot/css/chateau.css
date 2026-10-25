@@ -29,3 +29,80 @@
 .contas-demo code {
     color: #d63384;
 }
+
+/* Botões de conta no cabeçalho: lado a lado, mesmo tamanho, sem quebrar linha */
+.botoes-conta {
+    gap: 10px;
+    align-items: center;
+    margin: 10px 0 0 10px;
+}
+
+.botoes-conta .btn {
+    white-space: nowrap;
+}
+
+/* O CSS original tem um slider próprio com a classe .slide (380px e sombra forte),
+   que colidia com o carrossel do Bootstrap. Aqui o carrossel volta ao normal. */
+.carousel.slide {
+    max-width: none;
+    margin: 0;
+    display: block;
+    box-shadow: none;
+}
+
+.carousel.carrossel-sobre {
+    max-width: 460px;
+    margin: 0 auto 1.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(13, 41, 78, 0.15);
+}
+
+/* Redes sociais do rodapé, lado a lado */
+.redes-sociais {
+    display: flex;
+    gap: 24px;
+    margin: 12px 0 0 4px;
+}
+
+.redes-sociais a {
+    color: #fff;
+}
+
+.redes-sociais a:hover {
+    color: #f27298;
+}
+
+.endereco {
+    margin-top: 28px !important;
+}
+
+/* O CSS original zera o recuo de .Centro (inclusive no sobre.css, que carrega depois
+   deste arquivo); sem isso as linhas do Bootstrap passavam da borda da tela no celular */
+body .Centro {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+/* Cards dos planos na página de serviços: botão sempre no rodapé do card */
+.plano {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.plano ul {
+    flex-grow: 1;
+}
+
+.plano .btn {
+    align-self: flex-start;
+}
+
+/* Ilustrações com proporções diferentes: altura fixa para alinhar títulos e textos */
+.ilustracao {
+    height: 200px;
+    width: 100%;
+    object-fit: contain;
+    object-position: left bottom;
+}

@@ -33,7 +33,7 @@
         @if (usuario is null)
         {
             <a href="/Login?ReturnUrl=@Uri.EscapeDataString($"/Vagas/{Model.Vaga.IdVaga}")" class="btn btn-outline-danger">
-                Entre como profissional para se candidatar
+                Entre para se candidatar
             </a>
         }
         else if (usuario.Tipo == TipoUsuario.Profissional)
