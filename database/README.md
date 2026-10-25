@@ -34,7 +34,7 @@ Senha de todas: `demo1234`
 |---|---|
 | Administrador | `admin@demo.com` |
 | Empresa | `empresa@demo.com` |
-| Profissional | `candidato@demo.com` |
+| Candidato | `candidato@demo.com` |
 
 ## Modelo
 

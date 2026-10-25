@@ -21,7 +21,7 @@ public class IndexModel(PerfilBLL perfis, VagaBLL vagas) : PageModel
     public async Task<IActionResult> OnPostExcluirProfissionalAsync(int id)
     {
         await perfis.ExcluirProfissionalAsync(id);
-        TempData["Mensagem"] = "Profissional excluído.";
+        TempData["Mensagem"] = "Candidato excluído.";
         return RedirectToPage();
     }
 

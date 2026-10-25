@@ -37,7 +37,7 @@ public class CadastroBLL(EmpresaDAL empresas, ProfissionalDAL profissionais)
             return Resultado.Falha(erro);
 
         if (await profissionais.CampoDuplicadoAsync(p.DsEmail, p.DsUser, p.NroCPF) is { } campo)
-            return Resultado.Falha($"Já existe um profissional cadastrado com esse {campo}.");
+            return Resultado.Falha($"Já existe um candidato cadastrado com esse {campo}.");
 
         p.SenhaProfissional = AutenticacaoBLL.GerarHash(senha);
         return Resultado.Ok(await profissionais.InserirAsync(p));

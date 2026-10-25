@@ -10,7 +10,7 @@ Projeto acadêmico de conclusão de curso (TCC) onde encontramos um empregador r
 
 - Usuário da Empresa: Publicação, exclusão e edição de vagas | visualização dos currículos dos candidatos | edição do usuário empresa
 - Usuário do Candidato: Candidatura para as vagas | edição dos seus perfis e currículos | Visualização das vagas já candidatadas
-- Usuário Administrador: Gerenciamento dos profissionais, empresas e vagas
+- Usuário Administrador: Gerenciamento dos candidatos, empresas e vagas
 
 ### APP MOBILE:
 
@@ -36,17 +36,17 @@ A plataforma de vagas foi migrada de Web Forms + SQL Server para **.NET 8 + Post
 | Perfil | E-mail | Senha |
 |---|---|---|
 | Empresa | `empresa@demo.com` | `demo1234` |
-| Profissional | `candidato@demo.com` | `demo1234` |
+| Candidato | `candidato@demo.com` | `demo1234` |
 | Administrador | `admin@demo.com` | `demo1234` |
 
 Os dados de demonstração são restaurados todos os dias às 3h.
 
 ### O que dá para fazer
 
-- **Visitante:** ver e buscar vagas, se cadastrar como empresa ou profissional
-- **Profissional:** montar o currículo (dados, experiências e certificados), se candidatar e acompanhar as candidaturas
+- **Visitante:** ver e buscar vagas, se cadastrar como empresa ou candidato
+- **Candidato:** montar o currículo (dados, experiências e certificados), se candidatar e acompanhar as candidaturas
 - **Empresa:** publicar, editar e excluir vagas, ver os candidatos e o currículo de cada um
-- **Administrador:** gerenciar profissionais, empresas e vagas
+- **Administrador:** gerenciar candidatos, empresas e vagas
 
 ### Tecnologias
 
@@ -98,7 +98,7 @@ cd src && dotnet test
 - SQL Server → PostgreSQL, com o schema refeito a partir do que o código realmente usava
 - Queries que estavam quebradas foram reescritas e parametrizadas
 - Senhas passaram de texto puro para hash BCrypt, e a string de conexão saiu do código
-- Empresas só veem e alteram as próprias vagas e candidatos; profissionais só alteram o próprio currículo
+- Empresas só veem e alteram as próprias vagas e candidatos; candidatos só alteram o próprio currículo
 
 ---
 
@@ -117,7 +117,7 @@ https://github.com/user-attachments/assets/f57e9775-f1a2-4dfa-a64c-0eb34ffdba9b
 O app original só mostrava vagas de exemplo fixas no código. A versão nova consome dados reais por uma API em ASP.NET Core 10:
 
 - **Visitante:** lista, busca e compartilha vagas
-- **Profissional:** se candidata, cancela, acompanha as candidaturas e vê o currículo
+- **Candidato:** se candidata, cancela, acompanha as candidaturas e vê o currículo
 - **Empresa:** vê as vagas publicadas e os candidatos de cada uma
 
 As contas de demonstração são as mesmas da tabela acima.

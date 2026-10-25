@@ -9,7 +9,7 @@
 -- Contas de demonstração (senha de todas: demo1234)
 --   Administrador: admin@demo.com
 --   Empresa:       empresa@demo.com
---   Profissional:  candidato@demo.com
+--   Candidato:     candidato@demo.com
 -- =============================================================================
 
 CREATE OR REPLACE FUNCTION resetar_demo() RETURNS void
