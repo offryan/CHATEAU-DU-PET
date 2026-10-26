@@ -110,7 +110,9 @@ https://github.com/user-attachments/assets/f57e9775-f1a2-4dfa-a64c-0eb34ffdba9b
 
 | | |
 |---|---|
-| 📥 **APK para Android** | [chateau-du-pet.apk](https://github.com/offryan/chateau-du-pet-mobile/releases/latest/download/chateau-du-pet.apk) (Android 6.0+) |
+| 🏷️ **Versão atual** | [v2.2.0](https://github.com/offryan/chateau-du-pet-mobile/releases/tag/v2.2.0) |
+| 📥 **APK para Android** | [chateau-du-pet.apk](https://github.com/offryan/chateau-du-pet-mobile/releases/download/v2.2.0/chateau-du-pet.apk) (Android 6.0+) |
+| 💻 **App para Windows** | [chateau-du-pet-windows.zip](https://github.com/offryan/chateau-du-pet-mobile/releases/download/v2.2.0/chateau-du-pet-windows.zip) (Windows 10/11, 64 bits): extraia e abra o `Chateau Du Pet.exe` |
 | 🔗 **API do app** | https://chateau-du-pet-api.onrender.com/scalar |
 | 🗄️ **Banco** | O mesmo PostgreSQL desta demo web: o que é feito no app aparece aqui e vice-versa |
 
