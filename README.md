@@ -162,3 +162,8 @@ ChateauDuPet.sln
 2. Crie o banco executando `ChateauDuPet.DAL/ScriptDB/ScriptChateauPet.sql` no SQL Server.
 3. Ajuste a string de conexão em `ChateauDuPet.DAL/Conexao.cs` e `ChateauDuPet.UI/Web.config` para apontar para o seu banco.
 4. Defina o projeto de inicialização (`DESKTOP.UI` para o app desktop ou `ChateauDuPet.SITE` para o site) e rode com **F5**.
+
+
+## 📄 Licença
+
+© 2021-2026 Ryan G. Santos. Todos os direitos reservados. O código está público apenas para portfólio e avaliação: não é permitido copiar, modificar, distribuir ou usar comercialmente sem autorização por escrito. Veja o arquivo [LICENSE](LICENSE).
